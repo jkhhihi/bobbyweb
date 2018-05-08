@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1"-->
+  	
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	  <script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script>
+    $( document ).ready(function(){
+    	$(".button-collapse").sideNav();
+    })
+    </script>
+  </head>
+  <body onload="rdate()">
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+  <div class="container">
+    <div class="row">
+			<h5>스터디 등록하기</h5>
+			<form action="/adm/study/insert/upload" method="post" enctype="multipart/form-data">
+				<div class="file-field input-field">
+			    	<div class="btn">
+						<span>이미지 등록</span>
+				    	<input type="file" name="file" multiple>
+			    	</div>
+			      <div class="file-path-wrapper">
+			        <input class="file-path validate" type="text">
+			      </div>
+			   </div>
+         <input type="submit" class="btn waves-effect waves-light" value="업로드" />
+         <p>※업로드 전 확인 사항</p>
+         <p>1. 아래 이미지 파일명 입력전 꼭 파일 업로드. (확장자명 확인 필수 jpg,png,jpeg 가급적 jpg로 올려주세요.)</p>
+         <p>2. 저장되는 업로드 파일 위치 /std/이미지파일.jpg</p>
+         <p>3. 이미지 저장시 네이밍 규칙(필수) : <span style="color:red;">1(index번호)_파일명.jpg</span>(설마 파일명을 1(index번호)_파일명.jpg로 하는사람없길..(index번호)는 생략)</p>
+         <p>※ idx번호 확인 방법 : 스터디 리스트에서 <b>이전</b> 게시물 idx번호 확인 후 +1인 번호 (예 이전 idx번호가 4 인경우 5_파일명.jpg)</p>
+         <p>4. 이미지를 교체하고 싶을때는 파일명,확장자 올린 그대로 똑같이 다시 올리면 덮어씌우기 되면서 교체가 됩니다.</p>
+         <p>5. 이미지 삭제 원할시 개발팀에 문의 정기훈, 양희아</p>
+			</form>
+
+		<form class="col s12" action="/adm/study/insert" method="post">
+      <div class="container">			
+        <div class="row" style="margin-top:  2em;">
+
+					<div class="input-field col l12">
+						<input id="title" type="text" class="validate" name="subject">
+						<label for="제목">스터디 제목</label>
+					</div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="subject2">
+            <label for="상세내용">스터디 상세 내용(75자 이하)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="bgimg1" value="/std/파일명.jpg">
+            <label for="배경">스터디 배경 이미지(권장 사이즈 1660x500)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="thum" value="/std/파일명.jpg">
+            <label for="썸네일">리스트 페이지 썸네일 이미지(권장 사이즈 500x350)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="thum2" value="/std/파일명.jpg">
+            <label for="썸네일2">세부페이지 썸네일 이미지(권장 사이즈 450x450)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="img1" value="/std/파일명.jpg">
+            <label for="세줄소개이미지">세줄소개 이미지</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="img2" value="/std/파일명.jpg">
+            <label for="커리큘럼이미지">커리큘럼 이미지</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="img3" value="/std/파일명.jpg">
+            <label for="리더이미지">스터디 리더 이미지</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="decate" value="18시즌 2">
+            <label for="시즌">스터디 시즌</label>
+          </div>
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="recentdate" value="2018년 4월 7일 토요일">
+            <label for="날짜">가장 가까운 스터디 날짜</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="leader">
+            <label for="리더명">스터디 리더명</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="period" value="18년 4~6월(3개월)">
+            <label for="기간">스터디 기간 (예 18년 4~6월(3개월))</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sche1" value="4/24(토) 10:00~12:30">
+            <label for="일정1">스터디 일정 1 (예 4/24(토) 10:00~12:30 )</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sche2">
+            <label for="일정2">스터디 일정 2 (예 4/24(토) 10:00~12:30 )</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sche3">
+            <label for="일정3">스터디 일정 3 (예 4/24(토) 10:00~12:30 )</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="location">
+            <label for="위치">위치</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="price" value="299000">
+            <label for="금액">금액(예 299000 숫자만 입력)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="people" value="5~15">
+            <label for="인원">인원(예 5~15 숫자만 입력)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="line1">
+            <label for="세줄1">세줄 소개 1(70자 이하)</label>
+          </div>
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="line2">
+            <label for="세줄2">세줄 소개 2(70자 이하)</label>
+          </div>
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="line3">
+            <label for="세줄3">세줄 소개 3(70자 이하)</label>
+          </div>
+
+          <div class="input-field col s4">
+            <select name="value1">
+              <option value="" disabled selected>핵심가치1</option>
+              <option value="1">주식</option>
+              <option value="2">부동산</option>
+              <option value="3">투자</option>
+              <option value="4">재테크</option>
+              <option value="5">암호화폐</option>
+              <option value="6">창업</option>
+              <option value="7">기업분석</option>
+              <option value="8">상식</option>
+            </select>
+            <label></label>
+          </div>
+          <div class="input-field col s4">
+            <select name="value2">
+              <option value="" disabled selected>핵심가치2</option>
+              <option value="1">주식</option>
+              <option value="2">부동산</option>
+              <option value="3">투자</option>
+              <option value="4">재테크</option>
+              <option value="5">암호화폐</option>
+              <option value="6">창업</option>
+              <option value="7">기업분석</option>
+              <option value="8">상식</option>
+            </select>
+            <label></label>
+          </div>
+          <div class="input-field col s4">
+            <select name="value3">
+              <option value="" disabled selected>핵심가치3</option>
+              <option value="1">주식</option>
+              <option value="2">부동산</option>
+              <option value="3">투자</option>
+              <option value="4">재테크</option>
+              <option value="5">암호화폐</option>
+              <option value="6">창업</option>
+              <option value="7">기업분석</option>
+              <option value="8">상식</option>
+            </select>
+            <label></label>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:  2em;">
+
+          <div class="divider"></div>
+          <div class="section">
+            <h5>슬라이드 이미지</h5>
+            <p>자료 이미지가 부족할때 기본 이미지 URL -> /std/sliderimg.jpg</p>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="slimg1" value="/std/sliderimg.jpg">
+            <label for="슬라이드">슬라이드 이미지 1(권장 사이즈 1200x400)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="slimg2" value="/std/sliderimg.jpg">
+            <label for="슬라이드">슬라이드 이미지 2(권장 사이즈 1200x400)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="slimg3" value="/std/sliderimg.jpg">
+            <label for="슬라이드">슬라이드 이미지 3(권장 사이즈 1200x400)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="slimg4" value="/std/sliderimg.jpg">
+            <label for="슬라이드">슬라이드 이미지 4(권장 사이즈 1200x400)</label>
+          </div>
+
+          <div class="section">
+            <h5>리더 경력 및 프로필</h5>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="lepro1">
+            <label for="리더프로필">리더프로필 1(45자 이하)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="lepro2">
+            <label for="리더프로필">리더프로필 2(45자 이하)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="lepro3">
+            <label for="리더프로필">리더프로필 3(45자 이하)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="lepro4">
+            <label for="리더프로필">리더프로필 4(45자 이하)</label>
+          </div>
+
+          <div class="section">
+            <h5>리더 매력 어필</h5>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="appt1">
+            <label for="매력어필">매력어필 1 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="appc1"></textarea>
+            <label for="매력어필 내용">매력어필 1 내용</label>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="appt2">
+            <label for="매력어필">매력어필 2 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="appc2"></textarea>
+            <label for="매력어필 내용">매력어필 2 내용</label>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="appt3">
+            <label for="매력어필">매력어필 3 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="appc3"></textarea>
+            <label for="매력어필 내용">매력어필 3 내용</label>
+          </div>
+
+          <div class="section">
+            <h5>스터디 커리큘럼</h5>
+            <p>커리큘럼 1 내용 작성 방법</p>
+            <p>문단을 한칸 내리는 작성법 < p>글자들어가는곳< /p>를 사용함</p>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="step1">
+            <label for="커리큘럼">커리큘럼 1 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="stepc1" placeholder="<p>이것은 예시입니다</p><p>글자 문단을 내리고 싶으시면,</p><p>앞에 p,뒤에 p를 붙여주세요.</p>"></textarea>
+            <label for="커리큘럼">커리큘럼 1 내용</label>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="step2">
+            <label for="커리큘럼">커리큘럼 2 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="stepc2" placeholder="<p>1 : 내용 들어갑니다</p><p>2 : 띄어쓰기 없이 작성해주세요.</p><p>3 : 실제 화면에서는 문단이 줄바꿈이 됩니다.</p>"></textarea>
+            <label for="커리큘럼">커리큘럼 2 내용</label>
+          </div>
+
+          <div class="input-field col l4">
+            <input id="title" type="text" class="validate" name="step3">
+            <label for="커리큘럼">커리큘럼 3 제목 (45자 이하)</label>
+          </div>
+
+          <div class="input-field col l8">
+            <textarea id="textarea1" class="materialize-textarea" name="stepc3" placeholder="문장 줄바꿈이 필요없다면 그냥 자유롭게 작성하세요.모든 문장이 붙어서 출력됩니다."></textarea>
+            <label for="커리큘럼">커리큘럼 3 내용</label>
+          </div>
+
+
+				</div>
+      </div>
+			<div class="center-align">
+				<button class="btn waves-effect waves-light" type="submit">등록하기
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+
+      </form>
+
+
+		</div>
+  </div>
+</body>
+</html>

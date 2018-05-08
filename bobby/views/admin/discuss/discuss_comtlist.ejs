@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+    <link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+      <div class="button-area">
+        <a href="/adm/discuss/insert" class="waves-effect waves-light btn">토론 등록</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/">요청</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/">신고</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/comtlist">댓글</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/comtcolist">대댓글</a>
+      </div>
+    </div>
+
+    <table class="bordered">
+        <thead>
+          <tr>
+              <th data-field="no">댓글 위치</th>
+              <th data-field="com_no">댓글번호</th>
+              <th data-field="writer">작성자</th>
+              <th data-field="text">내용</th>
+              <th data-field="date">날짜</th>
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <% for(var i = 0; i< comtlist.length; i++) { %>
+            <tr>
+              <td><a href="/discuss/detail/<%= comtlist[i].dis_no %>" target="_blank"><%= comtlist[i].dis_no %></a></td>
+              <td><%= comtlist[i].comt_no %></td>
+              <td><%= comtlist[i].comt_writer %></td>
+              <td><%= comtlist[i].comt_text %></td>
+              <td><h6><%= comtlist[i].comt_regdate %></h6></td>
+              <td><a href="/adm/discuss/comtdelete/<%= comtlist[i].comt_no %>">삭제</a></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+
+
+  </body>
+</html>

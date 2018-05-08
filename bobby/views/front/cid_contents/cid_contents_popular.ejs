@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	
+<!-- 네이버 -->
+<meta name="naver-site-verification" content="083657cb98aa9a4a9c62dedeffddfb2490545da0"/>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사이다경제 | 인기콘텐츠</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/cid_contents.css" rel="stylesheet">
+<link href="/css/swiper.css" rel="stylesheet">
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
+<script src="/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/component.css" />
+<script src="/js/modernizr.custom.js"></script>
+
+<script src="/js/gotoup.js"></script>
+
+<link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<!--link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/-->
+
+<!--공유 meta tags-->
+<meta name="title" content="사이다경제 | 인기콘텐츠" />
+<meta property="og:image" content="http://cidermics.com/page_imgs/fixed_img/thum_img.jpg" />
+
+<meta property="og:title" content="사이다경제" />	
+<meta property="og:site_name" content="사이다경제">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.cidermics.com/contents/" />
+<meta property="og:description" content="사이다경제 경제,금융,주식,기업 콘텐츠" />
+
+</head>
+<body>
+<!--위로가기 버튼-->
+<div id="but_top"><img class="gototop" src="/page_imgs/fixed_img/btn_gotoup.svg"></div>
+<% include ../top %>
+
+<div class="bg-blue">
+<div class="bg-white main-contents container">
+
+<div class="contents-menu">
+	<div class="container">
+		<div class="menu" align="center">
+			<a href="/contents/all"><img src="/page_imgs/contents_img/contents_menu7.svg" height='55'></a>
+			<a href="/contents"><img src="/page_imgs/contents_img/click_contents_menu1.svg" height='75'></a>
+			<a href="/contents/1"><img src="/page_imgs/contents_img/contents_menu2.svg" height='55'></a>
+			<a href="/contents/2"><img src="/page_imgs/contents_img/contents_menu3.svg" height='55'></a>
+			<a href="/contents/3"><img src="/page_imgs/contents_img/contents_menu4.svg" height='55'></a>
+			<a href="/contents/4"><img src="/page_imgs/contents_img/contents_menu5.svg" height='55'></a>
+			<a href="/contents/5"><img src="/page_imgs/contents_img/contents_menu6.svg" height='55'></a>
+			<a href="/contents/8"><img src="/page_imgs/contents_img/contents_menu0.svg" height='55'></a>
+		</div>
+	</div>
+</div>
+
+<div class="contents-mob_menu">
+		<div class="menu row" align="center">
+				<div class="col-xs-12" style="padding:0">
+						<a href="/contents/all"><img src="/page_imgs/contents_img/icon_menu_mob7.svg" width='50'></a>
+						<a href="/contents"><img src="/page_imgs/contents_img/click_icon_menu_mob1.svg" width='50'></a>
+						<a href="/contents/5"><img src="/page_imgs/contents_img/icon_menu_mob6.svg" width='50'></a>
+						<a href="/contents/8"><img src="/page_imgs/contents_img/icon_menu_mob0.svg" width='50'></a>
+				</div>
+				<div class="col-xs-12" style="padding:0; margin:0 0 15px 0;">
+						<a href="/contents/1"><img src="/page_imgs/contents_img/icon_menu_mob2.svg" width='50'></a>
+						<a href="/contents/2"><img src="/page_imgs/contents_img/icon_menu_mob3.svg" width='50'></a>
+						<a href="/contents/3"><img src="/page_imgs/contents_img/icon_menu_mob4.svg" width='50'></a>
+						<a href="/contents/4"><img src="/page_imgs/contents_img/icon_menu_mob5.svg" width='50'></a>
+					
+				</div>
+		</div>
+</div>
+
+<!-- style type="text/css">
+	.con_border{
+		border: 1px solid #ececec;
+		border-radius: 6px;
+	}
+</style -->
+
+<!--콘텐츠뿌림-->
+<div class="contents container" style="margin-bottom:50px;">
+	<div class="popular-title" align="center">
+	<p>인기 콘텐츠</p>
+	</div>
+		<ul class="grid effect-2" id="grid">
+			
+			<% for(var i=0; i< contents.length; i++) { %>
+			<li>
+			<div class="con_border">
+				<!--a href="/contents/detail/<%= contents[i].con_no %>" style="margin-top: 0px;"-->
+				<div class="con-img" align="center"><img class="img-responsive" src="<%= contents[i].con_photo %>"></div>
+				<div class="con-title" data-toggle="modal" data-target="#myModal<%=contents[i].con_no%>"><%= contents[i].con_title %></div>
+				<!--/a-->	
+			</div>
+			</li>
+			<% } %>
+		</ul>
+</div>
+
+<!-- Button trigger modal -->
+
+
+
+<script type="text/javascript" src="/js/clipboard.min.js"></script>
+<!-- Modal -->
+<% for(var i=0; i< cond.length; i++) { %>
+<div class="modal fade" id="myModal<%=cond[i].con_no%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= cond[i].con_title %></h4>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="row margin-lr0">
+			<div class="parallax3" style="margin-top: 0px; min-height: 200px;">
+				<div class="col-xs-12 padding-lr0">
+					<div class="conthum-black-box padding-lr0" style="height: 150px;">
+						<div class="row margin-lr0">
+							<div class="col-xs-12 info" align="right">
+							
+
+							<span class="date"><%= cond[i].con_upDate %></span><br>
+							<span class="cate_name"><%= cond[i].cate_name %></span><br>
+							<span class="write">written by <%=cond[i].con_writer%></span><br>
+
+							</div>
+						</div>
+					</div>
+			    </div>
+			</div>
+		</div>
+		<div class="contents container">
+			<div class="row">
+				<div class="col-xs-12 contents-in">
+					<%- cond[i].con_content %>
+				</div>
+			</div>
+		</div>
+
+		<div class="entry fix" style="padding: 0 5px; border: solid 1px #fff; text-align: center;">
+			<a id="clipURL<%= cond[i].con_no%>" style="font-size: 9pt">www.cidermics.com/contents/detail/<%= cond[i].con_no%></a>
+			<button type="button" id="btnCopyClip<%= cond[i].con_no%>" data-clipboard-action="copy" data-clipboard-target="#clipURL<%= cond[i].con_no%>" style="width: 80px;height: 30px;text-align: center; border-radius: 5px; border: 1px solid #fff; font-size: 10pt">URL복사</button>
+		</div>
+			<br>
+			<span id="txtCopyClip" style="display: none;">URL을 길게 누르면 복사하실 수 있습니다.</span>
+
+			<script type="text/javascript">
+			$(document).ready(function(){
+			 
+			  var clipboardSupport = true;
+			 
+			  try {
+			    $.browser.chrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
+			 
+			    var version = $.browser.version;
+			    version = new Number(version.substring(0, version.indexOf(".")));
+			 
+			    //모바일 접속인지 확인
+			    if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i))) {
+			      //클립보드 복사기능이 될경우 (크롬 42+)
+			      if ($.browser.chrome == true && version >= 42) {
+			        clipboardSupport = true;
+			      } else {
+			        clipboardSupport = false;
+			      }
+			    }
+			  } catch(e) {
+			  }
+			 
+			  if (clipboardSupport) {
+			    $("#btnCopyClip").show();
+			    $("#txtCopyClip").hide();
+			  } else {
+			    $("#btnCopyClip").hide();
+			    $("#txtCopyClip").show();
+			  }
+			 
+			  var clipboard = new Clipboard('#btnCopyClip<%= cond[i].con_no%>');
+			  clipboard.on('success', function(e) {
+			    alert("주소가 복사되었습니다.\n\n원하는 곳에 붙여넣기 해주세요.");
+			  });
+			  clipboard.on('error', function(e) {
+			    alert("접속중인 기기및 브라우저에서는\n클립보드 복사를 지원하지 않습니다.\nURL을 길게 누르면 복사하실 수 있습니다.");
+			  });
+			 
+			});
+			</script>
+
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+		<script src="/js/contents_js/masonry.pkgd.min.js"></script>
+		<script src="/js/contents_js/imagesloaded.js"></script>
+		<script src="/js/contents_js/classie.js"></script>
+		<script src="/js/contents_js/AnimOnScroll.js"></script>
+		<script>
+			new AnimOnScroll( document.getElementById( 'grid' ), {
+				minDuration : 0.4,
+				maxDuration : 0.7,
+				viewportFactor : 0.2
+			} );
+		</script>
+
+
+<% include ../bottom %>
+
+
+</body>
+</html>

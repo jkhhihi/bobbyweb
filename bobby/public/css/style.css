@@ -1,0 +1,12 @@
+.button-area {
+	margin-top: 1em;
+}
+.img-select {
+	cursor: pointer;
+}
+.fileName {
+	word-break: break-all;
+}
+.img-selected {
+    border: 3px solid #01579b;
+}

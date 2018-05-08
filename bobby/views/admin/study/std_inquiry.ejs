@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+
+  <div class="container">
+    <div class="row">
+      <a href="/adm/study/" class="waves-effect waves-light btn modal-trigger">뒤로가기</a>
+
+      <table>
+        <thead>
+          <tr>
+            <th>idx번호</th>
+            <th>카테고리</th>
+            <th>문의자명</th>
+            <th>이메일주소</th>
+            <th>문의 주제</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for(var i = 0; i< inq.length; i++) { %>
+            <tr>
+              <input type="hidden" name="idx" value="<%= inq[i].stda_no %>" />
+              <td><%= inq[i].stda_no %></td>
+              <td><% if (inq[i].stda_cate == 1){ %> 스터디 <% }else if(inq[i].stda_cate == 2 ){ %> 신청/환불 <% }else if(inq[i].stda_cate == 3 ){ %> 이벤트 <% }else if(inq[i].stda_cate == 4 ){ %> 기타 <% } %></td>
+              <td><%= inq[i].stda_name %></td>
+              <td><%= inq[i].stda_email %></td>
+              <td><%= inq[i].stda_title %></td>
+              <td><%= inq[i].stda_regdate %></td>
+              <td><a class="waves-effect waves-light btn modal-trigger" href="/adm/study/inquiryd/<%= inq[i].stda_no %>">상세내용</a></td>
+            </tr>
+          <% } %>
+
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+
+
+    
+      
+  </body>
+</html>

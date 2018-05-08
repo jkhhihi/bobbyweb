@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+
+  <div class="container">
+    <div class="row">
+
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>idx번호</th>
+            <th>카테고리</th>
+            <th>문의자명</th>
+            <th>이메일주소</th>
+            <th>문의 주제</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td><%= inq[0].stda_no %></td>
+              <td><% if (inq[0].stda_cate == 1){ %> 스터디 <% }else if(inq[0].stda_cate == 2 ){ %> 신청/환불 <% }else if(inq[0].stda_cate == 3 ){ %> 이벤트 <% }else if(inq[0].stda_cate == 4 ){ %> 기타 <% } %></td>
+              <td><%= inq[0].stda_name %></td>
+              <td><%= inq[0].stda_email %></td>
+              <td><%= inq[0].stda_title %></td>
+              <td><%= inq[0].stda_regdate %></td>
+            </tr>
+            
+
+        </tbody>
+      </table>
+      <br>
+      <th>상세내용</th>
+      <br>
+      <div class="divider"></div>
+      <br>
+      <td><%= inq[0].stda_text %></td>
+
+      <br>
+      <br>
+      <br>
+      <a href="/adm/study/inquiry">뒤로가기</a>
+
+
+
+    </div>
+  </div>
+
+
+    
+      
+  </body>
+</html>

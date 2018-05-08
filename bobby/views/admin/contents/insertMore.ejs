@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1"-->
+  	
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script>
+$( document ).ready(function(){
+	$(".button-collapse").sideNav();
+})
+</script>
+<style>
+	select {
+  display: none;
+}
+</style>
+  </head>
+  <body onload="rdate()">
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+    	<div class="row">			
+			<h5>더 알아보기 등록하기</h5>
+			<form class="col s12" name="conMore" action="/adm/contents/insertMore" method="post">
+				<div class="row" style="margin-top:  2em;">
+
+					<div class="input-field col s12">
+						<select name="con_no" id="con_title">
+						    <option value="">카테고리를 정해주세요</option>
+					      <% for(var i=0; i < cate.length; i++) {  %>					          
+                              <option value="<%=cate[i].con_no%>" id="<%=cate[i].con_no%>"> <%=cate[i].con_title%> </option>
+                              
+                          <% } %>
+					    </select>
+				    	<label>카테고리</label>
+				   </div>
+
+            <script type="text/javascript">
+              $(document).ready(function() {
+                  $('select').material_select();
+                  $("#con_title").change(function(){
+                    //alert($(this).val());
+                    var chk = $(this).val();
+                    showMoreChk(chk);
+                    $("#userText").val(chk);
+                  });
+              });
+
+              function showMoreChk(chk){
+                //alert(chk);
+                var chkno = chk;
+
+              }
+                          
+            </script>
+
+
+            <textarea name="userText" id="userText" class="materialize-textarea"> </textarea>
+				    
+				    
+					<div class="input-field col l12">
+						<input id="title" type="text" class="validate" name="yes24">
+						<label for="제목">네이버 주소</label>
+					</div>
+          <!--div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="ala">
+            <label for="제목">알라딘</label>
+          </div>
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="kyobo">
+            <label for="제목">교보문고</label>
+          </div-->
+
+          <div class="input-field col s12">
+            <input id="title" type="text" class="validate" name="cmlabel">
+            <label>라벨</label>
+          </div>
+
+				</div>
+				
+      <div class="center-align">
+        <button class="btn waves-effect waves-light" type="submit">등록하기
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+
+ 
+ 
+			</form>
+
+		</div>
+    </div>
+  </body>
+<script src="/js/custom.js"></script>
+
+<!--script type="text/javascript">
+function MoreChk(id) {
+   var chk="#showComt"+id;
+    $(chk).toggle(200);
+    showComtco(id);
+}
+
+function showComtco(id)
+{
+  var idx = id;
+   $.ajax({
+        url : '/ssss/'+idx,
+        method : 'get',
+        success : function(data){
+          var ht="";
+          $.each(data.ddd, function (index, value){
+            ht += "<form method='get' action='/discuss/declaration2' style='margin:5px 0 0 5px'><table class='table table-condensed'><tr class='active'><td class='primary re-comment'><h6><b>┖ </b>"+value.comtco_writer+" | "+ value.comtco_date+"<input type='hidden' name='declar_comtco_no' value='"+value.comtco_no+"'> | <button type='submit' class='btn-declaration'>신고</button> | <span class='glyphicon glyphicon-remove-circle' id='deleteComtco"+value.comtco_no+"' onclick='deleteComtco("+value.comtco_no+")'></span></form><form class='showDeleteComtco' id='showDeleteComtco"+value.comtco_no+"' value='"+value.comtco_no+"' style='display: none; padding:5px 0 10px 0'>비밀번호 : <input type='password' name='delectPw' value=''><a onclick='deleteComtcoSmt("+value.comtco_no+")' style='cursor:pointer'><span class='glyphicon glyphicon-trash'>삭제</span></a></button></form></h6>"+value.comtco_text+"</td></tr></table>";
+            var shco_no = value.comt_no;
+            document.getElementById('showComtco'+shco_no).innerHTML = ht;
+          });
+          
+        }
+      });
+};
+</script-->
+  
+
+  </html>

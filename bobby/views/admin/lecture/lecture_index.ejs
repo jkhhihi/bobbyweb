@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+
+    <div class="container" style="margin: 50px auto;">
+      <h4>세미나</h4>
+      <div class="row">
+        <div class="col s6">
+          <a href="/adm/lecture/insert" class="waves-effect waves-light btn">세미나 등록</a>
+        </div>
+        <div class="col s6">
+          <a href="/adm/lecturelist" class="waves-effect waves-light btn">세미나 리스트</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <br>
+
+      <div class="row">
+        <div class="col s6">
+          <a href="/adm/lecture/customer" class="waves-effect waves-light btn">입금 현황</a>
+          <span class="z-depth-1 yellow">신청자 <%= app[0].app %> NEW</span>
+          <span class="z-depth-1 yellow">무통장 <%= nonac[0].nonac %> NEW</span>
+        </div>
+        <div class="col s6">
+          <a class="waves-effect waves-light btn" href="/adm/lecture/applist">멤버원 현황</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <br>
+
+      <div class="row">
+        <div class="col s6">
+          <a class="waves-effect waves-light btn" href="/adm/lecture/inquiry">문의 현황</a>
+          <span class="z-depth-1 yellow"><%= inq[0].inq %> NEW</span>
+        </div>
+        <div class="col s6">
+        </div>
+      </div>
+
+    </div>
+    
+    
+      
+      
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1"-->
+     
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+    <!--link rel="icon" href="http://cidermics.com/page_imgs/fixed_img'[]/favicon.ico"/-->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+div#fixed {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+}
+</style>
+    
+  </head>
+  <body>
+     <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+    <a href="/adm/finance/slist" class="waves-effect waves-light btn modal-trigger">뒤로가기</a>
+    
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+  		    <div class="input-field col s4"><label for="icon_prefix">등록번호 : </label>
+            <input id="icon_prefix" type="text" class="validate" value="<%=slist[0].sry_no%>">
+            <!--label for="icon_prefix">신청자명 : </label-->
+          </div>
+          <div class="input-field col s4"><label for="icon_prefix">등록 날짜 : </label>
+            <input id="icon_group_work" type="email" class="validate" value="<%=slist[0].date%>">
+          </div>
+          <div class="input-field col s4"><label for="icon_prefix">별점 : (5점 만점)</label>
+            <input id="icon_group_work" type="email" class="validate" value="<%=slist[0].sry_group2%>점">
+          </div>
+          
+  		<div class="input-field col s6"><label for="icon_prefix">상담자(후기 작성자)</label>
+            <input id="icon_prefix" type="text" class="validate" value="<%=slist[0].sry_name%>">
+            <!--label for="icon_prefix">신청자명 : </label-->
+          </div>
+          
+          <div class="input-field col s6">
+            <input id="icon_telephone" type="tel" class="validate" value="<%=slist[0].sry_etc1%>">
+            <label for="icon_prefix2">상담 년월</label>
+          </div>
+          
+           <div class="input-field col s6">
+            <input id="icon_telephone" type="email" class="validate" value="<%=slist[0].sry_etc2%>">
+            <label for="icon_prefix2">멘토명</label>
+          </div>
+          
+          <div class="input-field col s6">
+            <input id="icon_telephone" type="email" class="validate" value="<% if(slist[0].sry_group1 == 1){%> 만족한다 <% }else{%> 만족하지 못했다 <%}%>"/>
+            <label for="icon_prefix2">만족도</label>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">comment</i>
+            <textarea id="icon_prefix2"  style="height:250px;" class="materialize-textarea"><%=slist[0].sry_etc3%></textarea>
+            <label for="icon_prefix2">만족하셨다면(혹은 만족하지 못하셨다면) 그 이유는 무엇인가요?</label>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">comment</i>
+            <textarea id="icon_prefix2"  style="height:250px;" class="materialize-textarea"><%=slist[0].sry_etc4%></textarea>
+            <label for="icon_prefix2">상담자의 상담 태도는 어떠셨나요?</label>
+          </div>
+  				
+  		    <div class="input-field col s6">
+            <i class="material-icons prefix">comment</i>
+            <textarea id="icon_prefix2"  style="height:250px;" class="materialize-textarea"><%=slist[0].sry_etc5%></textarea>
+            <label for="icon_prefix2">원하는 니즈에 맞는 상담을 잘 듣고 도움이 되셨나요?</label>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">comment</i>
+            <textarea id="icon_prefix2"  style="height:250px;" class="materialize-textarea"><%=slist[0].sry_group13%></textarea>
+            <label for="icon_prefix2">끝으로 하시고 싶으신 말씀이있다면 작성해주세요.</label>
+          </div>
+
+	   </div>
+    </form>
+  </div>
+		
+	<a href="/adm/finance/slist" style="cursor:pointer"><div class="waves-effect waves-light btn">뒤로가기</div></a>
+
+  </body>
+</html>

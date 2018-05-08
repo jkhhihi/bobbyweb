@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+    <link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% var dis_title = dis_title; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+      <div class="button-area">
+        <a href="/adm/discuss/insert" class="waves-effect waves-light btn">토론 등록</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal2">요청</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal3">신고</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/comtlist">댓글</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="/adm/discuss/comtcolist">대댓글</a>
+      </div>
+    </div>
+
+    <table class="bordered">
+        <thead>
+        <span class="medium material-icons">label_outline 토론 게시글 리스트</span>
+          <tr>
+              <th data-field="no">번호</th>
+              <th data-field="title">제목</th>
+              <th data-field="date">날짜</th>
+              <th data-field="viewCount">조회수</th>
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <% for(var i = 0; i<discuss.length; i++) { %>
+            <tr>
+              <td><%= discuss[i].dis_no %></td>
+              <td><a href="/adm/discuss/detail/<%= discuss[i].dis_no %>"><%= discuss[i].dis_title %></a></td>
+              <td><%= discuss[i].dis_update %></td>
+              <td><%= discuss[i].dis_view %></td>
+              <td><a href="/adm/discuss/delete/<%= discuss[i].dis_no %>">삭제</a></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+<!-- 요청 Modal Structure -->
+<!--form name="discuss_submit" action="/adm/discuss/insert_2" method="post"-->
+<div id="modal2" class="modal bottom-sheet">
+  <div class="modal-content">
+  <ul class="collection">
+
+  <% for (var i=0; i<askval.length; i++) { %>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">perm_identity</i>
+      <span class="disAsk_cate"><%=askval[i].disAsk_cate%></span>
+      <span class="disAsk_writer"><%=askval[i].disAsk_writer%></span>
+      <span class="disAsk_writer"><%=askval[i].disAsk_title%></span>
+      <input type=text name="dis_title" value="<%=askval[i].disAsk_title%>">
+      <br>
+      <p>
+         <a href="/adm/discuss/askdelete/<%= askval[i].disAsk_no %>">삭제</a>
+      </p>
+      <!--button class="waves-effect waves-circle waves-light btn-floating secondary-content"  type="submit">
+        <i class="material-icons">mode_edit</i>
+      </button-->
+      <a href="/adm/discuss/insert_2/<%= askval[i].disAsk_no %>" class="waves-effect waves-circle waves-light btn-floating secondary-content">
+        <i class="material-icons">mode_edit</i>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+         
+  </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+</div>
+<!--/form-->
+
+<!-- 신고 Modal Structure -->
+<div id="modal3" class="modal bottom-sheet">
+    <div class="modal-content">
+        <ul class="collection">
+          <% for (var i=0; i<declar.length; i++) { %>
+        <li class="collection-item avatar">
+          <i class="material-icons circle green">perm_identity</i>
+          <span class="disDec_no">신고번호:<%=declar[i].disDec_no%></span>
+          <span> | </span>
+          <span class="dis_no" style="color:#f00">페이지번호:<%=declar[i].dis_no%></span>
+          <span> | </span>
+          <span class="comt_no" style="color:#0f8429">댓글번호:<%=declar[i].comt_no%></span>
+          <span> | </span>
+          <span class="comtco_no" style="color:#ab4aa7">대댓글번호:<%=declar[i].comtco_no%></span>
+          <span> | </span>
+          <span class="dis_regdate"><%=declar[i].comt_regdate%></span>
+          <% if (declar[i].dis_no == null){ %>
+          <a href="/adm/discuss/declarComtdelete2/<%= declar[i].comtco_no %>&<%=declar[i].disDec_no%>">대댓글 삭제</a>
+          <% } else { %>
+          <a href="/adm/discuss/declarComtdelete/<%= declar[i].comt_no %>&<%=declar[i].disDec_no%>">댓글 삭제</a>
+          <% } %>
+          <span> | </span>
+          <a href="/adm/discuss/declardelete/<%= declar[i].disDec_no %>"><i class="tiny material-icons">delete</i></a>
+          <br>
+          <span class="dis_text">내용:<%=declar[i].comt_text%></span>
+
+        </li>
+        <% } %>
+      </ul>
+         
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+</script>
+
+
+
+  </body>
+</html>

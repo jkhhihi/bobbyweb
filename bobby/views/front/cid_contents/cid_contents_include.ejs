@@ -1,0 +1,44 @@
+<!--콘텐츠뿌림-->
+<div class="contents container">
+		<ul class="grid effect-2" id="grid">
+				<!-- 재무 상담 콘텐츠 목록 맨 앞줄에 넣는 거-->
+				<!--li>
+				<div>
+					<a href="/finance/necessary">
+					<div class="con-img">
+					<img class="img-responsive con-thumbnail-img" style="position:relative; z-index:1" align="center" src="http://i.imgur.com/uPx2t9o.jpg">
+					</div>
+					</a>
+					<p align="center"><a href="/finance/necessary">2017년 3월, 사이다재무상담 오픈!</a></p>
+				</div>
+				</li-->
+			<% for(var i=0; i<contents.length; i++) { %>
+				<li>
+				<div>
+					<a href="/contents/detail/<%= contents[i].con_no %>">
+					<div class="con-img">
+					<img class="img-responsive" style="width:50px; position:absolute; z-index:2; margin:5px 0 0 5px;" src="<%= contents[i].chkDat%>">    <!--새로 업데이트된거 표시-->
+					<img class="img-responsive con-thumbnail-img" style="position:relative; z-index:1" align="center" src="<%= contents[i].con_photo %>">
+					</div>
+					</a>
+					<p align="center"><a href="/contents/detail/<%= contents[i].con_no %>">
+						<%= contents[i].con_title %></a></p>
+				</div>
+				</li>
+			<% } %>
+		</ul>
+</div>
+
+<div class="icon-plus_con" align="center" onclick="addMore()"><img class="img-responsive" src="/page_imgs/fixed_img/icon_plus_con.svg"></div>
+
+<script src="/js/contents_js/masonry.pkgd.min.js"></script>
+<script src="/js/contents_js/imagesloaded.js"></script>
+<script src="/js/contents_js/classie.js"></script>
+<script src="/js/contents_js/AnimOnScroll.js"></script>
+<script>
+	new AnimOnScroll( document.getElementById( 'grid' ), {
+		minDuration : 0.4,
+		maxDuration : 0.7,
+		viewportFactor : 0.2
+	} );
+</script>

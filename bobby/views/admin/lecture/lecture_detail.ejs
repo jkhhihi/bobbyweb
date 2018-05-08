@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1"-->
+     
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img'[]/favicon.ico"/>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+div#fixed {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+}
+</style>
+    
+  </head>
+  <body>
+     <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+		<div class="input-field col s6"><label for="icon_prefix">등록번호 : </label>
+          <i class="material-icons">label_outline</i>
+          <input id="icon_prefix" type="text" class="validate" value="<%=lecture[0].app_no%>">
+          <!--label for="icon_prefix">신청자명 : </label-->
+        </div>
+        <div class="input-field col s6"><label for="icon_prefix">강의 일자 : </label>
+          <i class="material-icons">today</i>
+          <input id="icon_prefix" type="text" class="validate" value="<%=lecture[0].app_Date%>일">
+          <!--label for="icon_prefix">신청자명 : </label-->
+        </div>
+		<div class="input-field col s6">
+          <i class="material-icons">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate" value="<%=lecture[0].app_name%>">
+          <!--label for="icon_prefix">신청자명 : </label-->
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons">phone</i>
+          <input id="icon_telephone" type="tel" class="validate" value="<%=lecture[0].app_phone%>">
+          
+        </div>
+         <div class="input-field col s6">
+          <i class="material-icons">email</i>
+          <input id="icon_telephone" type="email" class="validate" value="<%=lecture[0].app_email%>">
+          
+        </div>
+         <div class="input-field col s6">
+           <i class="material-icons">supervisor_account</i><label for="icon_prefix">직종 : </label>
+          <input id="icon_group_work" type="text" class="validate" value="<%=lecture[0].app_job%>">
+          
+        </div>
+        <div class="input-field col s6">
+           <i class="material-icons">swap_horiz</i><label for="icon_prefix">경로 : </label>
+          <input id="icon_group_work" type="text" class="validate" value="<%=lecture[0].app_path%>">
+          
+        </div>
+        <div class="input-field col s6">
+           <i class="material-icons">query_builder</i><label for="icon_prefix">등록 날짜 : </label>
+          <input id="icon_group_work" class="validate" value="<%=lecture[0].app_regDate%>">
+        </div>
+				
+		<div class="input-field col s12">
+          <i class="material-icons prefix">comment</i>
+          <textarea id="icon_prefix2" class="materialize-textarea"><%-lecture[0].app_comment%></textarea>
+          <label for="icon_prefix2">글 내용</label>
+        </div>
+	  </div>
+    </form>
+    <FORM action="/adm/lecture/detail/update" method="post">
+    	<input type="hidden" name="app_no" value="<%= lecture[0].app_no %>">
+        <div class="input-field col s6">
+           <i class="material-icons">av_timer</i><label for="icon_prefix">진행 상태 : </label>
+           <select name="app_process"><option value="<%=lecture[0].app_process%>" selected > <%=lecture[0].app_process%> </option>
+        		<option> 입금완료 </option>
+        		<option> 취소요청 </option>
+        		<option> 취소완료 </option>
+        		<option> 삭제대기 </option>
+                </select>
+            <input type="submit" class="btn waves-effect waves-light" value="수정" />
+        </div>
+        </FORM>
+  </div>
+		
+	<a href="/adm/lecture" style="cursor:pointer"><div class="waves-effect waves-light btn">뒤로가기</div></a>
+
+  </body>
+</html>

@@ -1,0 +1,94 @@
+  <div class="section no-pad-bot" id="index-banner"  style="padding-top:0; padding-bottom:0;">
+    <div class="container">
+      <br>
+      <h3 class="header center blue-text">핀북 관리자 페이지</h3>
+      
+      <div class="row center">
+        <a href="http://cidermics.com/finbook" id="download-button" class="btn-large waves-effect waves-light  blue darken-2" target="self">사이다경제 핀북 바로가기</a>
+        <a href="http://finbook.co.kr/" id="download-button" class="btn-large waves-effect waves-light  blue darken-2" target="self">핀북 공식페이지 바로가기</a>
+        <a href="http://onlinetest.thecubemind.co.kr/cidermics" id="download-button" class="btn-large waves-effect waves-light  blue darken-2" target="self">검사페이지</a>
+      </div>
+
+      
+
+    </div>
+  </div>
+
+<style>
+h2{
+  line-height:0%;
+}
+</style>
+
+  <div class="container">
+    <div class="section" style="padding-top:0; padding-bottom:0;">
+      <!--   Icon Section   -->
+      <div class="row" style="margin-bottom:0px;">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">border_color</i></h2>
+            <div class="row center">
+              <a href="/adm/finbook/insert" id="download-button" class="btn-large waves-effect waves-light  blue darken-2">쿠폰 코드 등록</a>
+            </div>
+            <!--h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2-->
+            <!--h5 class="center">핀북 쿠폰 등록</h5-->
+
+            <p class="light center">핀북에서 부여된 쿠폰을 등록</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <div class="row center">
+              <a href="/adm/finbook/customer" id="download-button" class="btn-large waves-effect waves-light  blue darken-2">구매자 목록</a>
+            </div>
+            
+            <!--h5 class="center">구매자 확인</h5-->
+
+            <p class="light center">핀북 신용카드, 카드결제 등을 이용한 구매자 목록 리스트</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">attach_money</i></h2>
+            <div class="row center">
+              <a href="/adm/finbook/bankbook" id="download-button" class="btn-large waves-effect waves-light  blue darken-2">무통장 입금</a>
+            </div>
+            <!--h2 class="center light-blue-text"><i class="material-icons">settings</i></h2-->
+            <!--h5 class="center">무통장 입금</h5-->
+
+            <p class="light center">무통장 입금자 처리 (입금 대기, 입금 확인, 쿠폰 지급 완료 등)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <form method="get" action="/adm/finbook/ORDERNO/">
+          <div class="input-field col s6">
+              <i class="material-icons prefix">border_color</i>
+              <input id="icon_prefix" type="text" class="validate" name="ORDERNO">
+              <label for="icon_prefix">주문 번호 입력</label>
+              <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">검색
+                <i class="material-icons blue lighten-2 right">send</i>
+              </button>
+          </div>
+          
+        </form>
+        <form method="get" action="/adm/finbook/USERNAME/">
+          <div class="input-field col s6">
+              <i class="material-icons prefix">border_color</i>
+              <input id="icon_prefix" type="text" class="validate" name="USERNAME">
+              <label for="icon_prefix">성명으로 검색</label>
+              <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">검색
+                <i class="material-icons blue lighten-2 right">send</i>
+              </button>
+          </div>
+          
+        </form>
+        <!--h5 class="header col s12 light">사이다경제 X 핀북</h5-->
+      </div>
+
+    </div>
+  </div>

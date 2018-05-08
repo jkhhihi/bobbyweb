@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"-->
+    
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script>
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+})
+</script>
+  </head>
+  <body onload="rdate()">
+    <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+        <div class="row">           
+            <h5>토론 등록하기</h5>
+            <form action="/adm/discuss/insert/upload" method="post" enctype="multipart/form-data">
+                <!-- <input type="file" name="file" />
+                <input type="submit" /> -->
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>이미지 등록</span>
+                        <input type="file" name="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <input type="submit" class="btn waves-effect waves-light" value="업로드" />
+            </form>
+            <form class="col s12" id="discussform">
+                <div class="row" style="margin-top:  2em;">
+                   <div class="input-field col s12">
+                   <input type="hidden" value="<%= askval[0].disAsk_no %>" name="no"> 
+                        <select name="category">
+                          <option value="" disabled>카테고리를 정해주세요</option>
+                     
+                           <% for(var i=0; i < cate.length; i++) {  %> 
+                               <option value="<%=cate[i].disCate_no%>" <% if( askval[0].disAsk_cate == cate[i].disCate_no){ %> selected <% } %> > <%=cate[i].disCate_name%> </option>
+                               
+                           <% } %>
+                        </select>
+                   </div>
+                    
+                    
+                    <div class="input-field col l12">
+                        
+                        <input id="title" type="text" class="validate" value="<%=askval[0].disAsk_title%>" name="title">
+                        <label for="제목"></label>
+                        
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger2" href="#modal1">이미지 설정</a>
+                        
+                                    
+                        <!-- Modal Structure -->
+
+                        <div id="modal1" class="modal">
+                            <div class="navbar-fixed">
+                                <nav>
+                                    <div class="nav-wrapper">
+                                    <a class="brand-logo"><h5>이미지 등록</h5></a>
+                                    <ul class="right hide-on-med-and-down">
+                                        <li><a href="#!" class="btn-thumb modal-action waves-effect waves-green btn-flat">썸네일 설정</a></li>
+                                        <!--li><a href="#!" class="btn-contents modal-action waves-effect waves-green btn-flat">본문 이미지 설정</a></li-->
+                                    </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            
+                            <ul class="pagination"></ul>
+                            <div class="modal-content">
+                              <div class="images">
+                              </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="preview row" style="display:none;">
+                            <p>대표 이미지</p>
+                            <img src="" class="img-responsive col l4" />
+                            <input type="hidden" name="photo">
+                        </div>
+                        
+                        <div class="input-field col s12">
+                            <input id="writer" type="text" class="validate" name="writer">
+                            <label for="작성자">토론 등록자</label>
+                        </div>
+
+                        <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s6">
+                                  <i class="material-icons prefix">album</i>
+                                  <input id="icon_prefix" type="text" class="validate" name="comt_1">
+                                  <label for="icon_prefix">첫번째 문항(예:찬성한다)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                  <i class="material-icons prefix">album</i>
+                                  <input id="icon_telephone" type="tel" class="validate" name="comt_2">
+                                  <label for="icon_telephone">두번째 문항(예:반대한다)</label>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+
+                        <script type="text/javascript">
+                        function rdate() {
+                            var _tot;
+                            var now = new Date();
+                            var _year= now.getFullYear();
+                            var _mon = now.getMonth()+2;
+                              console.log(_mon);
+                             _mon=""+_mon;
+                             if (_mon.length < 2 )
+                             {
+                                _mon="0"+_mon;
+                             }
+                              var _date=now.getDate();
+                              console.log(_date);
+                              _date =""+_date;
+                              if (_date.length < 2 )
+                                 {
+                                    _date="0"+_date;
+                                 }
+                              var _hor = now.getHours() +1;
+                              console.log(_hor);
+                             _hor =""+_hor;
+                             if (_hor.length < 2 )
+                             {
+                                _hor="0"+_hor;
+                             }
+                             var _min=now.getMinutes();
+                              _min =""+_min;
+                             if (_min.length < 2 )
+                             {
+                                _min="0"+_min;
+                             }
+                             _tot=_year+""+_mon+""+_date+""+_hor+""+ _min;
+
+                             //return _tot;
+
+                              //document.getElementById("demo").innerHTML = _tot(value);
+                              document.getElementById("rdate").value=_tot;
+
+                        }
+                        </script>
+                        <div class="input-field col s12">
+                          <label for="제목">게시 일자 설정 (예 : 2017년 9월 1일 14시 30분 일시 -> 201709011430)</label>
+                          <input id="rdate" name="rdate" type="text"  class="validate" maxlength="12" value="_tot">
+                        </div>
+                        
+                    </div>
+                </div>
+            
+        
+                
+ <!-- 연관 게시글 선택 지웠음 -->
+ 
+ 
+            </form>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" id="discuss_insert">등록하기
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="/js/custom.js"></script>
+  
+
+  </html>

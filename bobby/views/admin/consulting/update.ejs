@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+    altFormat: "yyyymmdd"
+    
+    
+});
+  </script>
+  </head>
+  <body>
+    <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+        <div class="row">
+            <h5>재무 등록하기</h5>
+            <form action="/adm/contents/insert/upload" method="post" enctype="multipart/form-data">
+                <!-- <input type="file" name="file" />
+                <input type="submit" /> -->
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>이미지 등록</span>
+                        <input type="file" name="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <input type="submit" class="btn waves-effect waves-light" value="업로드" />
+            </form>
+            <form class="col s12" id="csform">
+                <div class="row" style="margin-top:  2em;">
+                    <input type="hidden" value="<%= consulting[0].cons_no %>" name="no"> 
+
+                    <div class="input-field col l12">
+                        
+                        <input id="name" type="text" class="validate" value="<%= consulting[0].cons_name %>">
+                        <label for="회사명">회사명</label>
+                        
+                    </div> 
+                    
+                    <div class="input-field col l12">
+                        <input id="url" type="text" class="validate" value="<%= consulting[0].cons_site_url %>">
+                        <label for="사이트URL">사이트URL</label>
+                    </div>
+                        
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger1" href="#modal1">이미지 설정</a>
+                        
+                        
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                              <div class="images">
+                                
+                              </div>
+                              <ul class="pagination">
+                    
+                              </ul>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="#!" class="btn-thumb modal-action waves-effect waves-green btn-flat">썸네일 설정</a>
+                              <a href="#!" class="btn-contents modal-action waves-effect waves-green btn-flat">본문 이미지 설정</a>
+                            </div>
+                        </div>
+                        
+                        <div class="preview row" style="display:block;">
+                            <p>대표 이미지</p>
+                            <img src="<%= consulting[0].cons_img %>" class="img-responsive col l4" />
+                            <input type="hidden" name="photo" value="<%= consulting[0].cons_img %>" >
+                        </div>
+                        
+                        <textarea id="content"><%- consulting[0].cons_content %></textarea>
+                        
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('select').material_select();
+                            });
+                            var oEditors = [];
+                            nhn.husky.EZCreator.createInIFrame ({
+                                
+                                oAppRef : oEditors,
+                                                                
+                                elPlaceHolder : "content",
+                                
+                                sSkinURI : "/smart_editor/SmartEditor2Skin.html",
+                                
+                                fCreator : "createSEditor2"
+                            });
+                                                    
+                        </script>
+                    </div>
+                            
+                </div>
+                
+                <div class="input-field col l12">
+                <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
+                </div>
+                
+                <input type="hidden" name="contents">
+                <input type="hidden" name="name">
+                <input type="hidden" name="url">
+                
+            </form>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" id="cons_update">수정하기
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="/js/custom.js"></script>
+  </html>

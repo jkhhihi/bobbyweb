@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+        <div class="button-area">
+            <a href="/adm/consulting/insert" class="waves-effect waves-light btn">등록</a>
+            <a href="/adm/consulting/delete" class="waves-effect waves-light btn">삭제</a>          
+        </div>
+        
+      <table class="bordered">
+        <thead>
+          <tr>
+              <th data-field="no">번호</th>
+              <th data-field="title">회사</th>
+              <th data-field="date">날짜</th>
+              <th data-field="viewCount">조회수</th>
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+        <script type="text/javascript">
+          function deletechk(no){
+            var con_test = confirm("삭제하시겠습니까?");
+            if(con_test == true){
+              location.href="/adm/consulting/delete/"+no;
+            }
+            else if(con_test == false){
+              histroy.back(-1);
+            }
+          }
+        </script>
+            
+        <% for(var i = 0; i<consulting.length; i++) { %>
+            <tr>
+                <td><%= consulting[i].cons_no %></td>
+                <td><a href="/adm/consulting/detail/<%= consulting[i].cons_no %>"><%= consulting[i].cons_name %></a></td>
+                <td><%= consulting[i].cons_regDate %></td>
+                <td><%= consulting[i].cons_viewCount %></td>
+                <td><button onclick="deletechk(<%= consulting[i].cons_no %>)">삭제</button></td>
+                <td><a href="/adm/consulting/delete/<%= consulting[i].cons_no %>" onclick="deletechk()">삭제</a></td>
+            </tr>
+        <% } %> 
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

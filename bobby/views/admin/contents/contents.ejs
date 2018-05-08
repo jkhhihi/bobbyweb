@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"-->
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+    	<div class="button-area">
+	    	<a href="/adm/contents/insert" class="waves-effect waves-light btn">등록</a>
+        <a href="/adm/contents/insertMore" class="waves-effect waves-light btn">더알아보기</a>
+	    	<!--a href="/adm/contents/delete" class="waves-effect waves-light btn">삭제</a-->
+	    	<!--a href="/adm/contents/insert2" class="waves-effect waves-light btn">더미만들기</a-->  
+    	</div>
+    	
+      <table class="bordered">
+        <thead>
+          <tr>
+          	  <th data-field="no">번호</th>
+              <th data-field="title">제목</th>
+              <th data-field="date">날짜</th>
+              <th data-field="viewCount">조회수</th>
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+        
+		<% for(var i = 0; i < contents.length; i++) { %>
+			<tr>
+				<td><%= contents[i].con_no %></td>
+				<td><a href="/adm/contents/detail/<%= contents[i].con_no %>"><%= contents[i].con_title %></a></td>
+				<td><%= contents[i].con_upDate %></td>
+				<td><%= contents[i].con_viewCount %></td>
+				<td><a href="/adm/contents/delete/<%= contents[i].con_no %>">삭제</a></td>
+        <form action="/adm/pop_ck" method="post">
+        <td><input type="hidden" name="pop_ck" value="<%= contents[i].con_no %>"><button class="btn waves-effect waves-light" type="submit" value="보내기">보내기 </button></td>
+        </form>
+			</tr>
+		<% } %>
+        
+        </tbody>
+      </table>
+    </div>
+    
+    
+      
+      
+  </body>
+</html>

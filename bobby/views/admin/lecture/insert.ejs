@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1"-->
+  	
+    <title>Cidermics Admin</title>
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="/js/materialize.js"></script>
+    <script type="text/javascript" src="/smart_editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script>
+$( document ).ready(function(){
+	$(".button-collapse").sideNav();
+})
+</script>
+<style>
+	select {
+  display: none;
+}
+</style>
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+    	<div class="row">			
+			<h5>세미나 등록하기</h5>
+			<form action="/adm/lecture/insert/upload" method="post" enctype="multipart/form-data">
+			    <!-- <input type="file" name="file" />
+			    <input type="submit" /> -->
+				<div class="file-field input-field">
+			    	<div class="btn">
+						<span>이미지 등록</span>
+				    	<input type="file" name="file" multiple>
+			    	</div>
+			      	<div class="file-path-wrapper">
+			        	<input class="file-path validate" type="text">
+			      	</div>
+			    </div>
+			    <input type="submit" class="btn waves-effect waves-light" value="업로드" />
+
+		         <p>※업로드 전 확인 사항 - 스터디 업로드와 99% 비슷함.</p>
+		         <p>1. 아래 이미지 파일명 입력전 꼭 파일 업로드. (확장자명 확인 필수 jpg,png,jpeg 가급적 jpg로 올려주세요.)</p>
+		         <p>2. 저장되는 업로드 파일 위치 /semi/이미지파일.jpg</p>
+		         <p>3. 이미지 저장시 네이밍 규칙(필수) : <span style="color:red;">1(index번호)_파일명.jpg</span>(설마 파일명을 1(index번호)_파일명.jpg로 하는사람없길..(index번호)는 생략)</p>
+		         <p>※ idx번호 확인 방법 : 스터디 리스트에서 <b>이전</b> 게시물 idx번호 확인 후 +1인 번호 (예 이전 idx번호가 4 인경우 5_파일명.jpg)</p>
+		         <p>4. 이미지를 교체하고 싶을때는 파일명,확장자 올린 그대로 똑같이 다시 올리면 덮어씌우기 되면서 교체가 됩니다.</p>
+		         <p>5. 이미지 삭제 원할시 개발팀에 문의 정기훈, 양희아</p>
+			</form>
+	<form class="col s12" action="/adm/lecture/insert" method="post">
+      <div class="container">			
+        <div class="row" style="margin-top:  2em;">
+
+		  <div class="input-field col l12">
+			  <input id="title" type="text" class="validate" name="subject">
+			  <label for="제목">세미나 제목</label>
+		  </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="thum" value="/semi/파일명.jpg">
+            <label for="썸네일">리스트 페이지 썸네일 이미지(권장 사이즈 500x350)</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="img1" value="/semi/파일명.jpg">
+            <label for="세줄소개이미지">강의 디테일 이미지</label>
+          </div>
+
+          <div class="input-field col l12">
+            <input id="title" type="text" class="validate" name="img2" value="/semi/파일명.jpg">
+            <label for="커리큘럼이미지">페북썸네일이미지</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="leader">
+            <label for="리더명">세미나 강사명</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="stime" value="14:00~16:00">
+            <label for="날짜">세미나 시간</label>
+          </div>
+
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sdate" value="2018년 4월 7일 토요일">
+            <label for="날짜">세미나 날짜</label>
+          </div>
+
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sstdate" value="2018년 3월 29일 목요일">
+            <label for="기간">모집 기간 (첫날)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="sendate" value="4월 6일 금요일">
+            <label for="일정1">모집 기간 (마지막 날짜)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="location" value="서울시 강남구 테헤란로 33길 39 혜성빌딩 세미나실">
+            <label for="위치">위치</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="mapX" value="37.5042215">
+            <label for="X축">구글맵 장소 X축 *장소 변경될때-개발팀 문의</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="mapY" value="127.0383906">
+            <label for="Y축">구글맵 장소 Y축 *장소 변경될때-개발팀 문의</label>
+          </div>
+
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="price" value="30000">
+            <label for="금액">금액(예 30000 숫자만 입력)</label>
+          </div>
+
+          <div class="input-field col l6">
+            <input id="title" type="text" class="validate" name="people" value="30">
+            <label for="인원">인원(예 30 숫자만 입력)</label>
+          </div>
+
+
+        </div>
+      </div>
+			<div class="center-align">
+				<button class="btn waves-effect waves-light" type="submit">등록하기
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+
+      </form>
+		</div>
+    </div>
+  </body>
+  <script src="/js/custom.js"></script>
+  </html>

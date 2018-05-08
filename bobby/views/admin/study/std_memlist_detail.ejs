@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>관리자 스터디</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+    <a href="/adm/study/memlist" class="waves-effect waves-light btn modal-trigger">뒤로가기</a>
+
+  <h5 class="header center blue-text">스터디 총 확정 멤버원 현황</h5>
+
+
+  <div class="row" id="list">
+    <div class="col s12">
+      <div><h5><b>신용카드,휴대폰 결제</b></h5></div>
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>번호</th>
+                <th>주문 번호</th>
+                <th>시즌</th>
+                <th>스터디</th>
+                <th>성명</th>
+                <th>이메일 주소</th>
+                <th>휴대폰 번호</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>경로</th>
+                <th>기타</th>
+                <th>구매 시간</th>
+            </tr>
+          </thead>
+            
+
+          <tbody>
+          <% for(var i = 0; i< appfm.length; i++) { %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= appfm[i].orderno %></td>
+              <td><%= appfm[i].cate %></td>
+              <td><%= appfm[i].decate %></td>
+              <td><%= appfm[i].name %></td>
+              <td><%= appfm[i].email %></td>
+              <td><%= appfm[i].phone %></td>
+              <td><%= appfm[i].birth %></td>
+              <td><%= appfm[i].sex %></td>
+              <td><%= appfm[i].path %></td>
+              <td><%= appfm[i].gitar %></td>
+              <td><%= appfm[i].regdate %></td>
+            </tr>
+          <% } %>
+          </tbody>
+          
+        </table>
+        <br><br><br>
+    </div>
+  </div>
+
+  <div class="row" id="list">
+    <div class="col s12">
+      <div><h5><b> 무통장 결제</b></h5></div>
+          <table class="centered">
+            <thead>
+              <tr>
+                  <th>번호</th>
+                  <th>신청주제</th>
+                  <th>구매자 성명</th>
+                  <th>이메일 주소</th>
+                  <th>휴대폰 번호</th>
+                  <th>경로</th>
+                  <th>기타</th>
+                  <th>신청일</th>
+                  <!--th>삭제</th-->
+              </tr>
+            </thead>
+              
+
+            <tbody>
+            <% for(var i = 0; i< non.length; i++) { %>
+              <tr>
+                <td><%= i+1 %></td>
+                <td><%= non[i].subject %></td>
+                <td><%= non[i].USERNAME %></td>
+                <td><%= non[i].EMAIL %></td>
+                <td><%= non[i].TELNO %></td>
+                <td><%= non[i].path %></td>
+                <td><%= non[i].gitar %></td>
+                <td><%= non[i].insertdate %></td>
+              </tr>
+            <% } %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+  </body>
+</html>

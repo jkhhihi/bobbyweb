@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+    <!--link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/-->
+<style>
+input[type=submit] {
+    padding:5px 15px; 
+    color:#FFFFFF;
+    background:#2F8ECD; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+.acss{
+	padding:5px 15px; 
+    color:#FFFFFF;
+    background:#CCCCCC; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+</style>
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <div class="container">
+    	<div class="button-area">
+	    	<a href="" class="waves-effect waves-light btn">총 참여자 수 : <%=sryAll[0].sry%>명</a>
+    	</div>
+    	
+      <table class="bordered">
+        <thead>
+          <tr>
+          	  <th data-field="sry_no">번호</th>
+              <th data-field="sry_name">성명</th>
+              <th data-field="sry_phone">전화번호</th>
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+		<% for(var i = 0; i< survey.length; i++) { %>
+			<tr>
+				<input type="hidden" name="sry_no" value="<%= survey[i].sry_no %>" />
+				<td><%= survey[i].sry_no %></td>
+				<td><a href="/adm/survey/detail/<%= survey[i].sry_no %>"><%= survey[i].sry_name %></td>
+				<td><%= survey[i].sry_phone %></td>
+				<td><p class="acss"><a href="/adm/survey/delete/<%= survey[i].sry_no %>">삭제</a></p></td>
+			</tr>
+		<% } %>
+        </tbody>
+      </table>
+    </div>
+      
+  </body>
+</html>

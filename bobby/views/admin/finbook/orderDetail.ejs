@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>관리자 - 핀북</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    <% include nav.ejs %>
+
+  <h5 class="header center blue-text">주문자 상세보기</h5>
+  <div class="row">
+    <div id="card" class="col s12">
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>주문 번호</th>
+                <th>이메일 주소</th>
+                <th>구매자 성명</th>
+                <th>구매 날짜</th>
+                <!--th>삭제</th-->
+            </tr>
+          </thead>
+            
+
+          <tbody>
+          <% for(var i = 0; i< card.length; i++) { %>
+            <tr>
+              <td><a href="/adm/finbook/orderDetail/<%= card[i].ORDERNO %>"><%= card[i].ORDERNO %></td>
+              <td><%= card[i].EMAIL %></td>
+              <td><%= card[i].USERNAME %></td>
+              <td><%= card[i].date %></td>
+              <!--td><a href="/adm/finbook/cardDelete/<%= card[i].ORDERNO %>">삭제</a></td-->
+            </tr>
+          <% } %>
+          <% for(var i = 0; i< mobile.length; i++) { %>
+            <tr>
+              <td><%= mobile[i].ORDERNO %></td>
+              <td><%= mobile[i].EMAIL %></td>
+              <td><%= mobile[i].USERNAME %></td>
+              <td><%= mobile[i].date %></td>
+              <!--td><a href="/adm/finbook/mobileDelete/<%= mobile[i].ORDERNO %>">삭제</a></td-->
+            </tr>
+          <% } %>
+          </tbody>
+          
+        </table>
+        <h6 class="header center">쿠폰 번호 지급 현황</h6>
+        
+        <br><br><br>
+    </div>
+  </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
+  </body>
+</html>

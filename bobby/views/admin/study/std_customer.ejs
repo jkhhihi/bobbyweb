@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>관리자 스터디</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <% var data= CP; %>
+    <% include ../include/nav.ejs %>
+
+    <a href="/adm/study/" class="waves-effect waves-light btn modal-trigger">뒤로가기</a>
+
+  <h5 class="header center blue-text">결제 현황</h5>
+
+
+<ul class="tabs">
+    <li class="tab col s4 "><a class="active blue-text" href="#list">신청자 전체 목록</a></li>
+    <li class="tab col s4"><a class="green-text" href="#paylist">결제자 목록</a></li>
+</ul>
+
+  <div class="row" id="list">
+    <div class="col s12">
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>주문 번호</th>
+                <th>시즌</th>
+                <th>스터디</th>
+                <th>성명</th>
+                <th>이메일 주소</th>
+                <th>휴대폰 번호</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>경로</th>
+                <th>기타</th>
+                <th>구매 시간</th>
+            </tr>
+          </thead>
+            
+
+          <tbody>
+          <% for(var i = 0; i< code.length; i++) { %>
+            <tr>
+              <td><%= code[i].orderno %></td>
+              <td><%= code[i].cate %></td>
+              <td><%= code[i].decate %></td>
+              <td><%= code[i].name %></td>
+              <td><%= code[i].email %></td>
+              <td><%= code[i].phone %></td>
+              <td><%= code[i].birth %></td>
+              <td><%= code[i].sex %></td>
+              <td><%= code[i].path %></td>
+              <td><%= code[i].gitar %></td>
+              <td><%= code[i].regdate %></td>
+            </tr>
+          <% } %>
+          </tbody>
+          
+        </table>
+        <br><br><br>
+    </div>
+  </div>
+
+
+  <div class="row" id="paylist">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#card">신용카드 결제</a></li>
+        <li class="tab col s4"><a href="#mobile">핸드폰 결제</a></li>
+        <li class="tab col s4 disabled"><a href="#test3">실시간 계좌이체</a></li>
+        <li class="tab col s4"><a href="#non">무통장 결제</a></li>
+      </ul>
+    </div>
+    <div id="card" class="col s12">
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>주문 번호</th>
+                <th>이메일 주소</th>
+                <th>구매자 성명</th>
+                <th>구매 금액</th>
+                <th>구매 날짜</th>
+                <!--th>삭제</th-->
+            </tr>
+          </thead>
+            
+
+          <tbody>
+          <% for(var i = 0; i< card.length; i++) { %>
+            <tr>
+              <!--td><a href="/adm/finbook/orderDetail/<%= card[i].ORDERNO %>"><%= card[i].ORDERNO %></td-->
+              <td><%= card[i].ORDERNO %></td>
+              <td><%= card[i].EMAIL %></td>
+              <td><%= card[i].USERNAME %></td>
+              <td><%= card[i].AMOUNT %></td>
+              <td><%= card[i].date %></td>
+              <!--td><a href="/adm/finbook/cardDelete/<%= card[i].ORDERNO %>">삭제</a></td-->
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+    </div>
+    <div id="mobile" class="col s12">
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>주문 번호</th>
+                <th>구매자 성명</th>
+                <th>구매 금액</th>
+                <th>구매 날짜</th>
+                <!--th>삭제</th-->
+            </tr>
+          </thead>
+
+          <tbody>
+          <% for(var i = 0; i< mobile.length; i++) { %>
+            <tr>
+              <!--td><a href="/adm/finbook/orderDetail/<%= mobile[i].ORDERNO %>"><%= mobile[i].ORDERNO %></td-->
+              <td><%= mobile[i].ORDERNO %></td>
+              <td><%= mobile[i].USERNAME %></td>
+              <td><%= mobile[i].AMOUNT %></td>
+              <td><%= mobile[i].date %></td>
+              <!--td><a href="/adm/finbook/mobileDelete/<%= mobile[i].ORDERNO %>">삭제</a></td-->
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+    </div>
+    <div id="test3" class="col s12">준비중입니다.</div>
+    <div id="non" class="col s12">
+        <table class="centered">
+          <thead>
+            <tr>
+                <th>스터디번호</th>
+                <th>구매자 성명</th>
+                <th>신청일</th>
+                <th>입금예정일</th>
+                <th>입금금액</th>
+                <!--th>삭제</th-->
+            </tr>
+          </thead>
+            
+
+          <tbody>
+          <% for(var i = 0; i< non.length; i++) { %>
+            <tr>
+              <td><%= non[i].decate %></td>
+              <td><%= non[i].USERNAME %></td>
+              <td><%= non[i].insertdate %></td>
+              <td><%= non[i].duedate %></td>
+              <td><%= non[i].price %></td>
+              <form action="/adm/study/customer_up" method="post">
+                <td><select id="stval" name="state" >
+                  <option value="입금대기">입금대기</option>
+                  <option value="입금확인">입금확인</option>
+                </select>
+                </td>
+                <td><%= non[i].state %></td>
+                <td><button type="submit">수정</button></td>
+                <input type="hidden" name="idx" value="<%= non[i].idx%>">
+              </form>
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
+  </body>
+</html>

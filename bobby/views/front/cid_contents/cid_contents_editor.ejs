@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	
+<!-- 네이버 -->
+<meta name="naver-site-verification" content="083657cb98aa9a4a9c62dedeffddfb2490545da0"/>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사이다경제 | 콘텐츠</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/cid_contents.css" rel="stylesheet">
+<link href="/css/swiper.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/component.css" />
+<script src="/js/modernizr.custom.js"></script>
+
+<script src="/js/gotoup.js"></script>
+
+<link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<!--link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/-->
+
+<!--공유 meta tags-->
+<meta name="title" content="사이다경제 | 콘텐츠" />
+<meta property="og:image" content="http://cidermics.com/page_imgs/fixed_img/thum_img.jpg" />
+
+<meta property="og:title" content="사이다경제" />	
+<meta property="og:site_name" content="사이다경제">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.cidermics.com/contents/" />
+<meta property="og:description" content="사이다경제 경제,금융,주식,기업 콘텐츠" />
+
+</head>
+<body>
+<!--위로가기 버튼-->
+<div id="but_top"><img class="gototop" src="/page_imgs/fixed_img/btn_gotoup.svg"></div>
+<% include ../top %>
+
+<div class="bg-blue">
+<div class="bg-white main-contents container">
+
+
+<div class="contents-menu">
+	<div class="container">
+		<div class="menu" align="center">
+
+			<div class="col-xs-12 editor-picture" align="center"><img class="img-responsive" width="120" src="<%= editor[0].user_sns_icon %>"></div>
+			"<%= editor[0].user_comment %>"
+		</div>
+	</div>
+</div>
+
+<div class="contents-mob_menu">
+		<div class="menu row" align="center">
+				<div class="col-xs-12 editor-picture" align="center"><img class="img-responsive" width="80" src="<%= editor[0].user_sns_icon %>"></div>
+
+				<div class="col-xs-12" style="padding:0; margin:25px 0 0 0;">
+					"<%= editor[0].user_comment %>"
+				</div>
+		</div>
+</div>
+
+
+
+<!--콘텐츠뿌림-->
+<div class="contents container" style="margin-bottom:20px;">
+	<div class="row">
+		<div class="col-xs-0 col-lg-4"></div>
+		<div class="col-xs-12 col-lg-4 popular-title" align="center">
+			<p>"<%= editor[0].con_writer %>" 에디터의 글</p>
+		</div>
+		<div class="col-xs-0 col-lg-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-0 col-lg-4"></div>
+		<div class="col-xs-12 col-lg-4" align="center">
+			<p style="margin-top: 0; font-size: 13px"><a href="/our_team">에디터 더보기</a></p>
+		</div>
+		<div class="col-xs-0 col-lg-4"></div>
+	</div>
+</div>
+<div class="contents container" style="margin-bottom:50px;">
+
+			<ul class="grid effect-2" id="grid">
+				
+				<% for(var i=0; i< editor.length; i++) { %>
+				<li>
+				<div>
+					
+					<a href="/contents/detail/<%= editor[i].con_no %>">
+					<div class="con-img" align="center"><img class="img-responsive" src="<%= editor[i].con_photo %>"></div></a>
+					
+					<p><a href="/contents/detail/<%= editor[i].con_no %>">
+						<%= editor[i].con_title %></a></p>
+				</div>
+			</li>
+			<% } %>
+			</ul>
+</div>
+
+</div>
+</div>
+
+		<script src="/js/contents_js/masonry.pkgd.min.js"></script>
+		<script src="/js/contents_js/imagesloaded.js"></script>
+		<script src="/js/contents_js/classie.js"></script>
+		<script src="/js/contents_js/AnimOnScroll.js"></script>
+		<script>
+			new AnimOnScroll( document.getElementById( 'grid' ), {
+				minDuration : 0.4,
+				maxDuration : 0.7,
+				viewportFactor : 0.2
+			} );
+		</script>
+
+
+<% include ../bottom %>
+
+
+</body>
+</html>

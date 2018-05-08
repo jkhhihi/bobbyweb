@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cidermics admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel='stylesheet' href='/css/materialize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    
+    <link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<style>
+input[type=submit] {
+    padding:5px 15px; 
+    color:#FFFFFF;
+    background:#2F8ECD; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+.acss{
+	padding:5px 15px; 
+    color:#FFFFFF;
+    background:#CCCCCC; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+</style>
+
+  </head>
+  <body>
+  	<% var data= CP; %>
+    <% include ../include/nav.ejs %>
+    
+    <!--div class="container">
+    	<div class="button-area">
+	    	<a href="/adm/contents/insert" class="waves-effect waves-light btn">강의 등록</a>
+	    	<!--a href="/adm/contents/delete" class="waves-effect waves-light btn">삭제</a-->
+	    	<!--a href="/adm/contents/insert2" class="waves-effect waves-light btn">더미만들기</a>
+	    </div>
+    </div-->
+    <div class="container">
+      <table class="bordered">
+        <thead>
+          <tr>
+          	  <th data-field="app_no">등록번호</th>
+          	  <th data-field="app_cate">강의번호</th>
+              <th data-field="app_name">사용자이름</th>
+              <th data-field="app_price">입금금액</th>
+              <!--th data-field="app_phone">전화번호</th>
+              <th data-field="app_email">이메일주소</th>
+              <th data-field="app_job">직업</th>
+              <th data-field="app_path">경로</th>
+              <th data-field="app_comment">취소사유</th-->
+              <th data-field="app_process">진행상태</th>
+              <th data-field="date">등록날짜</th>
+              <!--th data-field=""></th-->
+              <th data-field=""></th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--form action="/adm/lecture/list/update" method="post"-->
+		<% for(var i = 0; i<lecture.length; i++) { %>
+			<tr>
+				<input type="hidden" name="app_no" value="<%= lecture[i].app_no %>" />
+				<td><%= lecture[i].app_no %></td>
+				<td><%= lecture[i].app_cate %></td>
+				<td><a href="/adm/lecture/detail/<%= lecture[i].app_no %>"><%= lecture[i].app_name %></td>
+				<td><%= lecture[i].app_price %></td>
+				<!--td><%= lecture[i].app_phone %></td>
+				<td><%= lecture[i].app_email %></td>
+				<td><%= lecture[i].app_job %></td>
+				<td><%= lecture[i].app_path %></td>
+				<td><select name="app_process">
+        		<option value="<%=lecture[i].app_process%>" selected > <%=lecture[i].app_process%> </option>
+        		<option> 입금완료 </option>
+        		<option> 취소요청 </option>
+        		<option> 취소완료 </option>
+        		<option> 삭제대기 </option>
+                </select>
+                </td>
+				<td><%= lecture[i].app_comment %></td-->
+				<td><%= lecture[i].app_process %></td>
+				<td><%= lecture[i].app_regDate %></td>
+				<!--td><input type="submit" value="수정"></td-->
+				<td><p class="acss"><a href="/adm/lecture/list/delete/<%= lecture[i].app_no %>">삭제</a></p></td>
+			</tr>
+		<% } %>
+		<!--/form-->
+        </tbody>
+      </table>
+    </div>
+    
+    
+      
+      
+  </body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+
+<!-- 네이버 -->
+<meta name="naver-site-verification" content="083657cb98aa9a4a9c62dedeffddfb2490545da0"/>
+
+<!--페이스북 관련 -->
+<!--meta property="fb:admins" content="{jkhhihi@naver.com}"/--><!--페이스북 슈퍼아이디-->
+
+
+<!--공유 meta tags-->
+<!--meta name="title" content="<%= contents[0].con_title %>" /-->
+<meta property="og:image" content="http://www.cidermics.com<%= contents[0].con_photo %>" />
+<meta property="fb:app_id" content="116627908812749">
+
+<meta property="og:title" content="<%= contents[0].con_title %>" />	
+<meta property="og:site_name" content="사이다경제">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://www.cidermics.com/contents/detail/<%= contents[0].con_no%>" />
+<meta property="og:description" content="사이다경제" />
+
+<link rel="shortcut icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="icon" href="http://cidermics.com/page_imgs/fixed_img/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="/css/component.css" />
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/cid_contents.css" rel="stylesheet">
+<link href="/css/swiper.css" rel="stylesheet">
+<!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"-->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= contents[0].con_title %> - 사이다경제 | 콘텐츠</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--script src="/js/bootstrap.min.js"></script-->
+<script src="/js/modernizr.custom.js"></script>
+<script src="/js/gotoup.js"></script>
+
+
+<style>
+.youtubeWrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.youtubeWrap iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+</style>
+
+<script type="text/javascript">
+ var i = 0;
+$(document).ready(function() {
+ 
+    var currentPage = 1;
+    checkForHash();
+ 
+    $('#btn1').add('#btn2').add('#btn3').bind('click', function(e) {
+        currentPage = $(this).val();
+        showPage($(this).val());
+    });
+ 
+    $('#link').bind('click', function(e) {
+        document.location.hash = "#" + currentPage;
+    });
+});
+ 
+function checkForHash() {
+    if(document.location.hash){
+        var HashLocationName = document.location.hash;
+        HashLocationName = HashLocationName.replace("#","");
+        $("#display").html(HashLocationName)
+    } else {
+        $("#display").html($('#btn1').val())
+    }
+}
+ 
+function showPage(value) {
+    $("#display").html(value)
+}
+
+function CaricaFoto(img){ 
+foto1= new Image(); 
+foto1.src=(img); 
+Controlla(img); 
+} 
+function Controlla(img){ 
+if((foto1.width!=0)&&(foto1.height!=0)){ 
+viewFoto(img); 
+} 
+else{ 
+funzione="Controlla('"+img+"')"; 
+intervallo=setTimeout(funzione,20); 
+} 
+} 
+
+function viewFoto(img){ 
+largh=foto1.width+20; 
+altez=foto1.height+20; 
+stringa="width="+largh+",height="+altez; 
+finestra=window.open(img,"",stringa); 
+} 
+</script>
+<style>
+	.row{
+		margin-right: 0px;
+		margin-left:0px;
+	}
+	.parallax3 {
+    /* The image used */
+    background-image: url("<%= contents[0].con_photo %>");
+	}
+
+body { padding-right: 0px !important }
+
+
+</style>
+
+</head>
+<body style="overflow:scroll;">
+<!--위로가기 버튼-->
+<div id="but_top"><img class="gototop" src="/page_imgs/fixed_img/btn_gotoup.svg"></div>
+<!--페이스북 연동 스크립트-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<% include ../top %>
+
+<!-- div class="contents_detail-mob_menu"><img src="/page_imgs/fixed_img/detail_line.png"></div-->
+
+<div class="bg-blue">
+<div class="bg-white container">
+		<div class="row margin-lr0">
+			<div class="parallax3" >
+				<div class="col-xs-12 padding-lr0">
+					<div class="conthum-black-box padding-lr0">
+						<div class="row margin-lr0">
+							<div class="col-xs-12 title" align="center"><%= contents[0].con_title%></div>
+
+							<div class="col-xs-12 info" align="right">
+							<% if ( memidval.length == 0) { %>
+							<!-- button onclick="clipping()" style="color: red;">스크랩하기 <%= sePass %></button -->
+							<img onclick="clipping()" style="width:25px; margin-bottom:5px;" src="/page_imgs/contents_img/btn-favorit-off.png">
+							<% } else { %>
+							<!-- button onclick="clipping_del(id)" style="color: red;" id="<%= memidval[0].cli_no %>">스크랩 이미 되어있음. <% var cli_no = memidval[0].cli_no; %><%= cli_no %></button -->
+							<img onclick="clipping_del(id)" id="<%= memidval[0].cli_no %>" style="width:25px; margin-bottom:5px;" src="/page_imgs/contents_img/btn-favorit-on.png"><% var cli_no = memidval[0].cli_no; %>
+							<% } %> <br>
+							<span class="date"><%= contents[0].con_upDate %></span><br>
+							<span class="cate_name"><%= contents[0].cate_name %></span><br>
+							<span class="write">written by <%=contents[0].con_writer%></span><br>
+							</div>
+						</div>
+					</div>
+			    </div>
+			</div>
+		</div>
+
+<!--스크랩하기 script-->
+<script type="text/javascript">
+	function clipping() {
+		var no = '<%=contents[0].con_no%>';
+		var title = $('<textarea />').html('<%=contents[0].con_title%>').text();
+		var photo = '<%=contents[0].con_photo%>';
+		var sePasschk = '<%=sePass%>';
+		if( sePasschk == 0){
+			alert("로그인이 필요합니다.");
+			location.href="/mem_login";
+		}else if(sePasschk == '<%=sePass%>'){
+			alert("스크랩 되었습니다.");
+			$.ajax({
+				url : '/clipping/'+sePasschk+"&"+no,
+				dataType: 'json',
+				data:{
+					'title' : title,
+					'photo' : photo,
+				},
+				method : 'post',
+
+				success : function(data){
+				location.reload();
+				}
+			  });
+		}else{
+			alert("일시적 오류가 발생했습니다.");
+			location.href="/";
+		}
+
+	}
+
+		function clipping_del(id) {
+		var no = '<%=contents[0].con_no%>';
+
+			alert("스크랩이 삭제되었습니다.");
+			$.ajax({
+				url : '/clipping_del/'+id+"&"+no,
+				dataType: 'json',
+				method : 'post',
+
+				success : function(data){
+				location.reload();
+				}
+			  });
+
+	}
+
+</script>
+<div class="mob-bg-gray">
+<div class="mob-bg-white container">		
+	<div class="contents container">
+		<div class="row">
+			<div class="col-xs-12 contents-in">
+				<%- contents[0].con_content %>
+			</div>
+		</div>
+	</div>
+<% if(contents[0].cate_name == "BOOKS" && cmore.length == 1) { %>
+<!--더 알아보기 -->
+	<div class="row">
+		<div class="col-xs-12" align="center">
+			<span data-toggle="modal" data-target="#myModal" class="btn-request" ><a href="<%=cmore[0].cmore_op1%>"><img src="/page_imgs/fixed_img/contentsMore.png" width="165" height="100" onclick="ga('send','event','책연결','버튼클릭','<%=cmore[0].cmore_label %><%=cmore[0].con_no %>' );"></a></span>
+		</div>
+	</div>
+	<!-- Modal -->
+<!--더 알아보기 끝 -->
+<% } %>
+
+		<div class="banner">
+		<div class="swiper-container">
+						<div class="swiper-wrapper">						
+								<div class="swiper-slide"><a href="/finance"><img class="img-responsive" src="/page_imgs/fixed_img/banner/kakaoplus.jpg"></a></div>
+								<!--div class="swiper-slide">배너들어가는곳</div-->
+						</div>
+						<!-- Add Pagination >
+						<div class="swiper-pagination"></div -->
+		</div>
+		</div>
+		
+<!-- Swiper JS -->
+<script src="/js/swiper.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 10,
+				//effect: 'fade',
+        centeredSlides: true,
+        //autoplay: 9000,
+        autoplayDisableOnInteraction: false
+    });
+</script>
+
+		<div class="contents container">
+				<p>&nbsp;</p>
+				<div class="row" align="center">
+					<% if ( memidval.length == 0) { %>
+							<!-- button onclick="clipping()" style="color: red;">스크랩하기 <%= sePass %></button -->
+							<img onclick="clipping()" style="width:40px; margin-bottom:5px;" src="/page_imgs/contents_img/btn-favorit-off.png">
+							<% } else { %>
+							<!-- button onclick="clipping_del(id)" style="color: red;" id="<%= memidval[0].cli_no %>">스크랩 이미 되어있음. <% var cli_no = memidval[0].cli_no; %><%= cli_no %></button -->
+							<img onclick="clipping_del(id)" id="<%= memidval[0].cli_no %>" style="width:40px; margin-bottom:5px;" src="/page_imgs/contents_img/btn-favorit-on.png"><% var cli_no = memidval[0].cli_no; %>
+					<% } %>
+					<p style="border-radius: 5px; border: solid 1px #b9b9b9; padding: 5px; width: 70px;">스크랩</p>
+				</div>
+		</div>
+
+
+
+<script type="text/javascript" src="/js/clipboard.min.js"></script>
+
+<div class="entry fix" style="padding: 0 5px; border: solid 1px #fff; text-align: center;">
+<a id="clipURL" style="font-size: 9pt">www.cidermics.com/contents/detail/<%= contents[0].con_no%></a>
+<button type="button" id="btnCopyClip" data-clipboard-action="copy" data-clipboard-target="#clipURL" style="width: 80px;height: 30px;text-align: center; border-radius: 5px; border: 1px solid #fff; font-size: 10pt">URL복사</button>
+</div>
+<br>
+<span id="txtCopyClip" style="display: none;">URL을 길게 누르면 복사하실 수 있습니다.</span>
+<script type="text/javascript">
+$(document).ready(function(){
+ 
+  var clipboardSupport = true;
+ 
+  try {
+    $.browser.chrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
+ 
+    var version = $.browser.version;
+    version = new Number(version.substring(0, version.indexOf(".")));
+ 
+    //모바일 접속인지 확인
+    if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i))) {
+      //클립보드 복사기능이 될경우 (크롬 42+)
+      if ($.browser.chrome == true && version >= 42) {
+        clipboardSupport = true;
+      } else {
+        clipboardSupport = false;
+      }
+    }
+  } catch(e) {
+  }
+ 
+  if (clipboardSupport) {
+    $("#btnCopyClip").show();
+    $("#txtCopyClip").hide();
+  } else {
+    $("#btnCopyClip").hide();
+    $("#txtCopyClip").show();
+  }
+ 
+  var clipboard = new Clipboard('#btnCopyClip');
+  clipboard.on('success', function(e) {
+    alert("주소가 복사되었습니다.\n\n원하는 곳에 붙여넣기 해주세요.");
+  });
+  clipboard.on('error', function(e) {
+    alert("접속중인 기기및 브라우저에서는\n클립보드 복사를 지원하지 않습니다.\nURL을 길게 누르면 복사하실 수 있습니다.");
+  });
+ 
+});
+</script>
+
+
+		
+		<div class="contents container">
+				<p>&nbsp;</p>
+				<div class="row like" align="center">
+					<div class="fb-like" data-href="http://www.cidermics.com/contents/detail/<%= contents[0].con_no %>" data-layout="box_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
+				</div>
+		</div>
+
+		<!--script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+		<div align="center">
+			<a id="kakao-link-btn" href="javascript:sendLink()">
+				<img src="//dev.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" style="width:30px; margin-bottom: -20px;"/>
+			</a>
+		</div>
+		<script type='text/javascript'>
+		Kakao.init('22802e61eeee5e4b969b820a4ea88b6a'); //Javascript키
+		//Kakao.init('c8f4142aea1479e97b61a487bb76de19'); //네이티브앱키
+		
+        //var url = window.location.href;
+		Kakao.Link.createTalkLinkButton({
+			      container: '#kakao-link-btn',
+			      label: '<%- contents[0].con_title %>',
+			      image: {
+			        src: 'http://cidermics.com<%- contents[0].con_photo %>',
+			        width: '300',
+			        height: '200'
+			      },
+			      webButton: {
+			        text: '이동',
+			        url: 'http://www.cidermics.com/contents/detail/<%= contents[0].con_no%>'
+			      }
+		});
+		
+		</script-->
+		<div class="row editor-introduce container" style="padding:0 10px 0 10px;">
+				<div class="col-xs-12 mob-editor-con">
+						<div class="row">
+								<div class="col-xs-12 editor-picture" align="center"><a href="/contents/editor/<%=contents[0].user_no%>"><img class="img-responsive" width="80" src="<%= contents[0].user_sns_icon %>"></a></div>
+								<div class="col-xs-12 editor-intro" align="left">
+										<p>에디터 : <a href="/contents/editor/<%=contents[0].user_no%>"><%=contents[0].con_writer%></a></p>
+										<p><%=contents[0].user_comment%></p>
+										<p><%=contents[0].user_email%></p>
+								</div>
+								<!--div class="col-xs-12 editor-sns" align="right">
+								<p><a href="/contents/editor/<%=contents[0].user_no%>">이 에디터의 다른 글 더 보기</a></p>
+									<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/icon_editor_facebook.png"></a>
+								</div-->
+								<% if ( contents[0].user_profile_img == 1 ){ %>
+
+								<div class="col-xs-12 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_1.png" width="70" height="70" onclick="ga('send','event','에디터프로필클릭','버튼클릭','<%= contents[0].con_writer %>' );"></a>
+								</div>
+								<% } else if ( contents[0].user_profile_img == 2 ) { %>
+								<div class="col-xs-12 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_2.png" width="70" height="70" onclick="ga('send','event','에디터프로필클릭','버튼클릭','<%= contents[0].con_writer %>' );"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 3 ) { %>
+								<div class="col-xs-12 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_3.png" width="70" height="70" onclick="ga('send','event','에디터프로필클릭','버튼클릭','<%= contents[0].con_writer %>' );"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 4 ) { %>
+								<div class="col-xs-12 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_4.png" width="70" height="70" onclick="ga('send','event','에디터프로필클릭','버튼클릭','<%= contents[0].con_writer %>' );"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 5 ) { %>
+								<div class="col-xs-12 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_5.png" width="70" height="70" onclick="ga('send','event','에디터프로필클릭','버튼클릭','<%= contents[0].con_writer %>' );"></a> 
+								</div>
+								
+								<% } else if ( contents[0].user_profile_img == 6 ) { %>
+								<div class="col-xs-12 editor-sns" align="left">
+								<img src="/page_imgs/contents_img/lch.svg">
+								</div>
+
+								<% } else { %>
+								
+								<% } %>
+						</div>
+				</div>
+				<div class="col-xs-12 web-editor-con">
+						<div class="row">
+								<div class="col-xs-2 editor-picture"><a href="/contents/editor/<%=contents[0].user_no%>"><img class="img-responsive" width="135" src="<%= contents[0].user_sns_icon %>"></a></div>
+								<div class="col-xs-6 editor-intro">
+										<p>에디터 : <a href="/contents/editor/<%=contents[0].user_no%>"><%=contents[0].con_writer%></a></p>
+										<p><%=contents[0].user_comment%></p>
+										<p><%=contents[0].user_email%></p>
+								</div>
+								<!--div class="col-xs-4 editor-sns" align="right">
+								<p><a href="/contents/editor/<%=contents[0].user_no%>">이 에디터의 다른 글 더 보기</a></p-->
+
+								<% if ( contents[0].user_profile_img == 1 ){ %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_1.png" width="70" height="70"></a>
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 2 ) { %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_2.png" width="70" height="70"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 3 ) { %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_3.png" width="70" height="70"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 4 ) { %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_4.png" width="70" height="70"></a> 
+								</div>
+
+								<% } else if ( contents[0].user_profile_img == 5 ) { %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<a href="<%= contents[0].user_sns_url%>"><img src="/page_imgs/contents_img/sns_5.png" width="70" height="70"></a> 
+								</div>
+								
+								<% } else if ( contents[0].user_profile_img == 6 ) { %>
+								<div class="col-xs-4 editor-sns" align="right">
+								<img src="/page_imgs/contents_img/lch.svg">
+								</div>
+
+								<% } else { %>
+								
+								<% } %>
+						</div>
+				</div>		
+		</div>
+		
+</div>
+</div>
+
+		<div class="row comment container" align="center">
+				<div class="col-xs-12" style="padding:0;">
+					<div class="fb-comments" data-href="http://www.cidermics.com/contents/detail/<%= contents[0].con_no %>" data-width="100%" data-numposts="5" data-mobile></div>
+				</div>
+		</div>
+		<div class="row pre-next container">
+		
+		<% for(var i=0; i<contents.length; i++) { %>
+		<% if (preNext[i].con_no < contents[i].con_no && preNext[i+1] == null) { %>
+			<a href="/contents/detail/<%= preNext[i].con_no %>">
+				<div class="col-xs-6 con-next">
+						<p>이전 편</p>
+						<p class="next-title"><%= preNext[i].con_title %></p>
+				</div>
+			</a>
+		
+		<% } else if (preNext[i].con_no > contents[i].con_no && preNext[i+1] == null){ %>
+			<a href="/contents/detail/<%= preNext[i].con_no %>">
+				<div class="col-xs-6 con-pre">
+					
+						<!--img class="img-responsive" src="<%=preNext[i].con_photo%>"-->
+						<p>다음 편</p>
+						<p class="pre-title"><%= preNext[i].con_title %></p>
+					
+				</div>
+			</a>
+		<% } else { %>
+				
+				<a href="/contents/detail/<%= preNext[i+1].con_no %>">
+				<div class="col-xs-6 con-next">
+						<p>이전 편</p>
+						<p class="next-title"><%= preNext[i+1].con_title %></p>
+				</div>
+				</a>
+				<a href="/contents/detail/<%= preNext[i].con_no %>">
+				<div class="col-xs-6 con-pre">
+					
+						<!--img class="img-responsive" src="<%=preNext[i].con_photo%>"-->
+						<p>다음 편</p>
+						<p class="pre-title"><%= preNext[i].con_title %></p>
+					
+				</div>
+				</a>
+				<% } %>
+		</div>
+		<% } %>
+		
+		
+	<!-- 광고 -->
+	<div class="ad col-xs-12"></div>
+		<a href="https://pf.kakao.com/_mpxdIu"><img class="img-responsive" src="/page_imgs/fixed_img/banner/kakaoplus.jpg"></a>
+	<div class="ad col-xs-12" style="margin-bottom:10px;"></div>
+		
+		
+		<div class="recommendation" style="margin-bottom:70px;">
+		<div class="recommendation-con container" >
+		<div class="recommendation-title" align="center">
+		<p>" 사이다경제 추천 "</p>
+		</div>
+
+			<ul class="grid effect-2" id="grid">
+				<% for(var j = 0; j<cont.length; j++){ %>
+					
+				<li>
+				<div>
+					<a href="/contents/detail/<%= cont[j].con_no %>">
+					<div class="con-img" align="center"><img class="img-responsive" src="<%= cont[j].con_photo %>"></div></a>
+					<p><a href="/contents/detail/<%= cont[j].con_no %>"><%= cont[j].con_title %></a></p>
+				</div>
+				</li>
+			<% } %>
+			</ul>
+
+
+		</div>		
+		</div>
+
+		<script src="/js/contents_js/masonry.pkgd.min.js"></script>
+		<script src="/js/contents_js/imagesloaded.js"></script>
+		<script src="/js/contents_js/classie.js"></script>
+		<script src="/js/contents_js/AnimOnScroll.js"></script>
+		<script>
+			new AnimOnScroll( document.getElementById( 'grid' ), {
+				minDuration : 0.4,
+				maxDuration : 0.7,
+				viewportFactor : 0.2
+			} );
+		</script>
+
+</div>
+
+<% include ../bottom %>
+
+<script>
+fnShareGoodsInfo = function() {
+      var sServiceDiv   = arguments[0];
+      var sServiceUrl, sServiceTitle;
+      sServiceUrl   = location.protocol + "//" + location.host + location.pathname + "?G_CODE=" + $('input[name="GCD"]').val();
+      switch (sServiceDiv.toUpperCase()) {
+         case "F" :    // FaceBook
+            sServiceUrl   = encodeURIComponent(sServiceUrl);
+            console.log(sServiceUrl);
+            sServiceTitle   = encodeURIComponent($(".goods_title").text());
+            window.open('http://www.facebook.com/sharer.php?u='+sServiceUrl+'&t='+sServiceTitle,'sharer','toolbar=0,status=0,width=626,height=436');
+            break;
+         case "T" :    // Twitter
+            sServiceUrl   = encodeURIComponent($(".goods_title").text() + " " + sServiceUrl);
+            window.open("http://twitter.com/home?status=" + sServiceUrl, 'sharer', 'toolbar=0,status=0,width=626,height=436');
+            break;
+         case "K" :    // Kakao Story
+            sServiceUrl   = encodeURIComponent(sServiceUrl);
+            window.open("https://story.kakao.com/share?url=" + sServiceUrl, 'sharer', 'toolbar=0,status=0,width=626,height=436');
+         default : 
+            break;
+      }
+      </script>
+
+</body>
+</html>
