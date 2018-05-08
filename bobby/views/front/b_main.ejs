@@ -1,15 +1,106 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <title>보비</title>
+  
+  	<title>보비 메인</title>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link href="/css/b_main.css" rel="stylesheet">
+	
+    <!--JS-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--script src="/js/materialize.js"></script-->
+   
+ 	<style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+    </style>
+     
   </head>
-  <body>
 
-  <% include top %>
-
-  <p>메인페이지zzhihihi하하하하히히</p>
-
-  <% include bottom %>
-
+<body>
+	<% include b_top %>
+	
+	<div class="main-bg">
+		<div class="container">
+			<h2>나만의 보험비서를 만나다</h2>
+			<h4>보험의 새로운 패러다임</h4>
+			<h3 class="font1">
+				인슈테크 기반으로 만들어진 보비를 통해<br>
+				가입된 자신의 보험 혜택을 톡톡히 누려보세요!
+			</h3>
+		</div>
+	</div>
+	<div class="appdown-bg">
+		<div class="container">
+			<h5 align="center">
+				가입된 보험 현황을 통한 맞춤 진단 컨설턴트!<br>
+				채팅을 통해 부담 없이 원하는 상담을 받아보세요!
+			</h5>
+			<div class="col-xs-6" align="right"><img class="img-responsive" src="/page_imgs/app-android.png"></div>
+			<div class="col-xs-6" align="left"><img class="img-responsive" src="/page_imgs/app-ios.png"></div>
+		</div>
+	</div>
+	<div class="service-info">
+		<div class="container info1">
+			<div class="col-sm-6" align="center"><img class="img-responsive" src="/page_imgs/main-phone1.jpg"></div>
+			<div class="col-sm-6" align="left">
+				<h3>보험정보 소개</h3>
+				<p>언제 가입했는지 기억도 안나는<br>
+				내 보험정보를 한눈에 볼 수 있어요!<br>
+				텍스트를 더 늘려야 할듯!?
+				</p>	
+			</div>
+		</div>
+		<div class="bg-ec">
+		<div class="container info2">
+			<div class="col-sm-6" align="right">
+				<h3>보비의 다양한 서비스</h3>
+				<p>전문가추천, 보험추천, 맞춤진단 등<br>
+				다양하고 완벽한<br>
+				무료 진단 상담을 통해<br>
+				당신의 삶이 달라질 수 있어요!
+				</p>	
+			</div>		
+			<div class="col-sm-6" align="left"><img class="img-responsive" src="/page_imgs/main-phone2.png"></div>
+		</div>
+		<div class="col-sm-12 info2-in" align="center">
+			<div class="container row">
+				<div class="col-sm-4"><p><b>전문가 추천</b></p><span>전문가추천은 어쩌고 저쩌고<br>보험추천은 어쩌고 저쩌고 입니다</span></div>
+				<div class="col-sm-4"><p><b>보험추천</b></p><span>전문가추천은 어쩌고 저쩌고<br>보험추천은 어쩌고 저쩌고 입니다</span></div>
+				<div class="col-sm-4"><p><b>맞춤진단</b></p><span>전문가추천은 어쩌고 저쩌고<br>보험추천은 어쩌고 저쩌고 입니다</span></div>
+			</div>
+		</div>
+		</div>
+		<div class="container info3">
+			<div class="col-sm-6" align="center"><img class="img-responsive" src="/page_imgs/main-phone3.jpg"></div>
+			<div class="col-sm-6" align="left">
+				<div class="balloon">
+				<h3>보비 고객만을 위한 콘텐츠</h3>
+					<p>콘텐츠를 통해 유익한 보험 정보 얻기!<br>
+					그리고 또 한가지,<br>
+					경제 콘텐츠를 통해 당신의 경제 지식이<br>
+					풍부해지는 경험을 해보세요.
+					</p>	
+				</div>
+			</div>
+		</div>				
+	</div>
+	<div class="appdown-bg">
+		<div class="container">
+			<h3 align="center">App Download</h3>
+			<p align="center">___</p>
+			<h5 align="center">
+				가입된 보험 현황을 통한 맞춤 진단 컨설턴트!<br>
+				채팅을 통해 부담 없이 원하는 상담을 받아보세요!
+			</h5>
+			<div class="col-xs-6" align="right"><img class="img-responsive" src="/page_imgs/app-android.png"></div>
+			<div class="col-xs-6" align="left"><img class="img-responsive" src="/page_imgs/app-ios.png"></div>
+		</div>
+	</div>
+ 	<% include b_bottom %> 
 </body>
 </html>

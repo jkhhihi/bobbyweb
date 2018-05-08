@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <title>보비</title>
+  
+  	<title>보비 메인</title>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link href="/css/b_main.css" rel="stylesheet">
+	
+    <!--JS-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--script src="/js/materialize.js"></script-->
+   
+ 	<style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+    </style>
+     
   </head>
-  <body>
 
-  <% include top %>
-
-  <p>콘텐츠리스트</p>
-
-  <% include bottom %>
-
+<body>
+	<% include b_top %>
+	
+	<div class="main-bg">
+		<div class="container">
+		<h2>나만의 보험비서를 만나다</h2>
+		<h4>보험의 새로운 패러다임</h4>
+		<h3 class="font1">
+			인슈테크 기반으로 만들어진 보비를 통해<br>
+			가입된 자신의 보험 혜택을 톡톡히 누려보세요!
+		</h3>
+		</div>
+	</div>
+	
+	
+	
+	<% include b_bottom %>  	
 </body>
 </html>
