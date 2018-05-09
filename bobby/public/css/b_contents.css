@@ -1,0 +1,28 @@
+/*b_conlist 스타일*/
+body{background-color:#ececec !important}
+.bg-ec{backgournd-color:#ececec}
+.main-bg{width:100%; height:350px; padding:120px 0; background-size: cover; background-image: url("/page_imgs/b-conlist-bg.jpg"); background-repeat:no-repeat}
+.con-cate{width:100%; height:auto; padding:50px 0; background-color:#0794be;}
+.con-cate a{color:#fff}
+.con-cate p{display:inline-block; border:2px solid #fff; border-radius:20px; width:120px; padding:8px 0; margin:0 10px; font-weight:bold}
+.con-cate p:hover{background-color:#fff; color:#0794be}
+.con-list{margin:100px 0}
+.con-list a{color:#000}
+.con-list a:hover{text-decoration:none; color:#000}
+.con-list .title{font-size:16px; font-weight:bold; line-height:1.5em; background-color:#fff; height:100px; padding:20px 20px; margin-bottom:50px}
+
+/*b_conde 스타일*/
+.con-thum{width:100%; height:350px; background-image: url("/page_imgs/b-conlist-bg.jpg"); background-repeat:no-repeat}
+.con-thum .black-box{width:100%; height:350px; padding:160px 0 120px 0; position:absolute; z-index:2; background-color:rgba(0,0,0,0.6); color:#fff}
+.con-thum .con-date{margin-top:100px}
+.con-info{background-color:#fff; padding:50px 0; line-height:2.0em}
+.con-info .container{width:60%}
+.con-info img{margin:20px 0}
+.con-list h5{width:130px; padding:10px 30px; background-color:#fff; border-radius:30px; color:#0794be; margin-bottom:30px;}
+
+
+@media all and (max-width:1024px) {
+
+	
+	
+}
