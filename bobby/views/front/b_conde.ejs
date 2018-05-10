@@ -27,22 +27,14 @@
 	<div class="con-thum" align="center">
 	<div class="black-box">
 		<div class="container">
-		<h3 class="con-title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</h3>
-		<h5 class="con-date" align="right">2018-05-09 12:36</h5>
+		<h3 class="con-title"><%= contents[0].con_title %></h3>
+		<h5 class="con-date" align="right"><%= contents[0].con_upDate %></h5>
 		</div>
 	</div>
 	</div>
 	<div class="con-info">
 		<div class="container" align="left">
-			콘텐츠 내용이 들어가는 자리입니다.<br>
-			해운동맹은 서로 협력하는 정도에 따라<br> 
-			선복매입, 선복교환, 선복공유라는  <br>
-			3가지 협약을 맺게 됩니다. 
-			<img class="img-responsive" src="/page_imgs/con-list/1.jpg">
-			콘텐츠 내용이 들어가는 자리입니다.<br>
-			해운동맹은 서로 협력하는 정도에 따라<br> 
-			선복매입, 선복교환, 선복공유라는  <br>
-			3가지 협약을 맺게 됩니다. 			
+			<%- contents[0].con_content %>			
 		</div>
 	</div>
 	
@@ -63,7 +55,7 @@
 				<a href="/conde">
 					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/1.jpg"></div>
 					<div class="title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</div>
-				</a>	
+				</a>
 			</div>
 			<div class="col-sm-4 col-xs-12">
 				<a href="/conde">

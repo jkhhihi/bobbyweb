@@ -119,13 +119,73 @@ router.get('/uguide', function(req, res, next) {
 });
 
 router.get('/conlist', function(req, res, next) {
-	res.render('front/b_conlist', { });
-});
+	var no = req.params.no;
+	var row;
 
-router.get('/conde', function(req, res, next) {
-	res.render('front/b_conde', { });
-});
+	var _tot = releaseTime();
 
+	var qry="";
+	
+	 qry="select con_no, con_photo, con_title, if (a.con_upDate > DATE_ADD(now(),INTERVAL -1 DAY) ,'/page_imgs/main_img/new_mark4.svg','/page_imgs/main_img/new_mark1px.png') as chkDat from bobbyDB.contents a where a.con_release <= '"+_tot+"' order by a.con_no desc limit 0,60";
+	mysql.select(qry, function (err, data){
+		if (err) throw err;
+		 row = data;
+			
+		 res.render('front/b_conlist', { contents : row});
+	});
+ });
+
+
+router.get('/conde/:no', function(req, res, next) {
+
+	var no = req.params.no;
+
+	var _tot = releaseTime();
+
+	var qry="";
+	
+	var row;
+	var sets = {con_no : no};
+	var next = {};
+	var pre = {};
+
+
+	mysql.update('update bobbyDB.contents set con_viewCount = con_viewCount + 1 where con_no = ?', [no] ,function (err, data){
+		if(err){
+			res.redirect('back');
+		}
+		
+		mysql.select('select c.con_no, c.con_category, c.con_writer, c.con_title, c.con_content, c.con_photo, c.con_viewCount,c.con_regDate, c.con_upDate, c.con_likeCnt, c.comment_no, c.user_no, c.user_comment, c.con_release,  u.user_email, u.user_name, u.user_profile_img, u.user_sns_url, u.user_sns_icon, cate.cate_no, cate.cate_name from bobbyDB.contents c left join bobbyDB.user u on u.user_no = c.user_no left join bobbyDB.con_cate cate on c.con_category = cate.cate_no and u.user_level = "2" where 1=1 and c.con_no = '+no+'', function (err, data){
+			if(err){
+				res.redirect('back');
+			}
+			if(data.length == 0){
+			var lang = 0;
+
+			}else{			
+			var lang = data[0].con_category;
+			}
+			var contents = data;
+			
+			mysql.select('(SELECT con_no, con_title, con_photo FROM bobbyDB.contents WHERE con_no > '+ no +' and con_category = "'+ lang +'" and con_release <= "'+_tot+'"  LIMIT 1) UNION ( SELECT con_no, con_title ,con_photo FROM bobbyDB.contents WHERE con_no < '+ no +' and con_category = "'+ lang +'" and con_release <= "'+_tot+'" ORDER BY con_no DESC LIMIT 1 ) order by con_no desc' , function (err, data){	
+				if(err){
+					res.redirect('back');
+				}
+				
+				qry="select con_no, con_photo, con_title from bobbyDB.contents where con_release <= '"+_tot+"' ORDER BY RAND() LIMIT 0,24";
+				   mysql.select(qry, function (err, data1){
+					if(err){
+					res.redirect('back');
+					}
+					row = data1;
+
+
+				res.render('front/b_conde', {contents : contents, preNext : data, cont : row,});
+				});
+			});
+		});
+	});
+});
 
 
 router.get('/top', function(req, res, next) {

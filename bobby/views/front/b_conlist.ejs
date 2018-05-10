@@ -43,46 +43,21 @@
 			<a href="/"><p>보험</p></a>
 		</div>
 	</div>
+
+	<!--콘텐츠뿌림-->
+
 	<div class="con-list" align="center">
 		<div class="container">
-		<div class="row" align="left">
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/1.jpg"></div>
-					<div class="title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</div>
-				</a>	
+			<div class="row" align="left">
+				<% for(var i=0; i < contents.length; i++) { %>
+				<div class="col-sm-4 col-xs-12">
+					<a href="/conde/<%= contents[i].con_no %>">
+						<div class="thumnail"><img class="img-responsive" src="<%= contents[i].con_photo %>"></div>
+						<div class="title"><%= contents[i].con_title %></div>
+					</a>	
+				</div>
+				<% } %>
 			</div>
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/2.jpg"></div>
-					<div class="title">주식을 할 때 암호화폐 비트코인을 모르면 절대 안된답니다!</div>
-				</a>	
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/3.jpg"></div>
-					<div class="title">돈으로 돈을 버는 방법</div>
-				</a>	
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/4.jpg"></div>
-					<div class="title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</div>
-				</a>	
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/5.jpg"></div>
-					<div class="title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</div>
-				</a>	
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<a href="/conde">
-					<div class="thumnail"><img class="img-responsive" src="/page_imgs/con-list/6.jpg"></div>
-					<div class="title">당신의 삶이 새롭게 변화되고 있다는걸 아세요?</div>
-				</a>	
-			</div>																									
-		</div>
 		</div>
 	</div>
 	
