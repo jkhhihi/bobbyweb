@@ -14,7 +14,20 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!--script src="/js/materialize.js"></script-->
-     
+    
+    <style>
+    	@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+    </style>
+	
+	<!-- 메뉴토글 -->
+	<script>
+	$(document).ready(function(){
+	    $("#menu-bar").click(function(){
+	        $("#menu").toggle();
+	    });
+	});
+	</script>     
+	     
   </head>
 
 <body>
@@ -31,7 +44,15 @@
 	</header>
 	<div id="mob-header">
 		<div class="header">
-			<div class="logo"><a href="/"><img class="img-responsive" src="/page_imgs/b-logo.png"></a></div>
+			<div class="col-xs-6 logo" align="left"><a href="/"><img class="img-responsive" src="/page_imgs/b-logo.png"></a></div>
+			<div class="col-xs-6 menu-bar" align="right"><img id="menu-bar" class="img-responsive" src="/page_imgs/mob-menu-bar.png"></div>
+			<div id="menu" class="col-xs-12" align="center" style="padding:0">
+				<h5><b>
+				<a href="/"><p>서비스소개</p></a>
+				<a href="/uguide"><p>사용설명서</p></a>
+				<a href="/conlist"><p>콘텐츠</p></a>
+				</b></h5>
+			</div>
 		</div>
 	</div>	
 		  	

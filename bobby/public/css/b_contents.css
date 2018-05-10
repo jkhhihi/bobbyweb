@@ -23,6 +23,24 @@ body{background-color:#ececec !important}
 
 @media all and (max-width:1024px) {
 
+.con-info .container{width:80%}
 	
+}
+
+@media all and (max-width:765px) {
+/*b_conlist 스타일*/	
+.main-bg{height:300px; padding:80px 0;}
+.con-cate{padding:20px 0}
+.con-cate .container{padding:0}
+.con-cate p{border:1px solid #fff; font-size:10px; width:58px; padding:6px 0; margin:0;}
+.con-list{margin:30px 0}
+.con-list .title{font-size:14px; margin-bottom:30px}
+
+/*b_conde 스타일*/
+.con-thum{height:300px;}
+.con-thum .black-box{height:300px; padding:100px 0 80px 0;}
+.con-thum .con-title{line-height:1.5em}
+.con-thum .con-date{margin-top:80px}
+.con-info .container{width:100%}
 	
 }
