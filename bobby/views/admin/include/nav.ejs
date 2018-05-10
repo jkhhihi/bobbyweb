@@ -10,9 +10,10 @@ $( document ).ready(function(){
 	line-height:50px;
 	}
 </style>
-<nav class="light-blue lighten-1" role="navigation">
+<nav class="teal lighten-3" role="navigation">
     <div class="nav-wrapper">
-      <a href="/adm" class="brand-logo"><img class="img-responsive" src="/page_imgs/fixed_img/mob_icon_logo.svg" style="width:60px; margin-top:6px; margin-left:15px;"></a>
+      <a href="/adm" class="brand-logo"><img class="img-responsive" src="/page_imgs/b-logo.png" style="width:80px; margin-top:6px; margin-left:15px;"><span style="font-size:10pt; color:#0a4e63;"> 관리자</span></a>
+
 
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
@@ -20,27 +21,11 @@ $( document ).ready(function(){
       	<li><a href="/logout">홈페이지</a></li>
         <li <% if(data == 0) { %> class="active" <% } %> > <a href="/adm/index">인기콘텐츠</a></li>
 		<li <% if(data == 1) { %> class="active" <% } %> > <a href="/adm/contents">콘텐츠</a></li>
-		<li <% if(data == 2) { %> class="active" <% } %> > <a href="/adm/lecture">세미나</a></li>
-		<li <% if(data == 3) { %> class="active" <% } %> > <a href="/adm/finance">재무</a></li>
-		<li <% if(data == 4) { %> class="active" <% } %> > <a href="/adm/discuss">토론</a></li>
-		<li <% if(data == 5) { %> class="active" <% } %> > <a href="/adm/survey">설문</a></li>
-		<li <% if(data == 6) { %> class="active" <% } %> > <a href="/adm/finbook">핀북</a></li>
-		<li <% if(data == 7) { %> class="active" <% } %> > <a href="/adm/podo">포도재무</a></li>
-		<li <% if(data == 8) { %> class="active" <% } %> > <a href="/adm/study">스터디</a></li>
-		<li <% if(data == 9) { %> class="active" <% } %> > <a href="/adm/consulting">TEST</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
       	<li><a href="/logout">홈페이지</a></li>
         <li <% if(data == 0) { %> class="active" <% } %> > <a href="/adm/index">인기콘텐츠</a></li>
 		<li <% if(data == 1) { %> class="active" <% } %> > <a href="/adm/contents">콘텐츠</a></li>
-		<li <% if(data == 2) { %> class="active" <% } %> > <a href="/adm/lecture">세미나</a></li>
-		<li <% if(data == 3) { %> class="active" <% } %> > <a href="/adm/finance">재무</a></li>
-		<li <% if(data == 4) { %> class="active" <% } %> > <a href="/adm/discuss">토론</a></li>
-		<li <% if(data == 5) { %> class="active" <% } %> > <a href="/adm/survey">설문</a></li>
-		<li <% if(data == 6) { %> class="active" <% } %> > <a href="/adm/finbook">핀북</a></li>
-		<li <% if(data == 7) { %> class="active" <% } %> > <a href="/adm/podo">포도재무</a></li>
-		<li <% if(data == 8) { %> class="active" <% } %> > <a href="/adm/study">스터디</a></li>
-		<li <% if(data == 9) { %> class="active" <% } %> > <a href="/adm/consulting">TEST</a></li>
       </ul>
     </div>
   </nav>

@@ -2,9 +2,9 @@ var mysql= require("mysql");
 
 var pool = mysql.createPool({
 	  connectionLimit : 8,
-	  host     : 'cider.cjvgnltk0cex.ap-northeast-1.rds.amazonaws.com',
-	  user     : 'frank',
-	  password : 'ss1gyk4w',
+	  host     : 'bobbydb.c6qsrkf9m0tq.ap-northeast-1.rds.amazonaws.com',
+	  user     : 'vipworks',
+	  password : 'vipworks01!',
 	  /*
 	  host     : 'raonomics.ctifxiukgip3.ap-northeast-2.rds.amazonaws.com',
 	  user     : 'fesila',

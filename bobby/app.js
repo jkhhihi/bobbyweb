@@ -100,7 +100,7 @@ passport.use('local', new LocalStrategy({
 
 function(req, email, pw, done) {
 
-  mysql.select('select * from cider.cid_user where user_email ="'+email+'" and user_password = "'+pw+'"', function (err, data){
+  mysql.select('select * from bobbyDB.user where user_email ="'+email+'" and user_password = "'+pw+'"', function (err, data){
     if(data.length < 1){
       console.log('fail');
       return done(null, false);
