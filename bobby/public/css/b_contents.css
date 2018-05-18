@@ -6,7 +6,7 @@ body{background-color:#ececec !important}
 .con-cate a{color:#fff}
 .con-cate p{display:inline-block; border:2px solid #fff; border-radius:20px; width:120px; padding:8px 0; margin:0 10px; font-weight:bold}
 .con-cate p:hover{background-color:#fff; color:#0794be}
-.con-list{margin:100px 0}
+.con-list{margin:20px 0}
 .con-list a{color:#000}
 .con-list a:hover{text-decoration:none; color:#000}
 .con-list .title{font-size:16px; font-weight:bold; line-height:1.5em; background-color:#fff; height:100px; padding:20px 20px; margin-bottom:50px}

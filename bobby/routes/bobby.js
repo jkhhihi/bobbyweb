@@ -166,25 +166,21 @@ router.get('/conde/:no', function(req, res, next) {
 			var lang = data[0].con_category;
 			}
 			var contents = data;
-			
-			mysql.select('(SELECT con_no, con_title, con_photo FROM bobbyDB.contents WHERE con_no > '+ no +' and con_category = "'+ lang +'" and con_release <= "'+_tot+'"  LIMIT 1) UNION ( SELECT con_no, con_title ,con_photo FROM bobbyDB.contents WHERE con_no < '+ no +' and con_category = "'+ lang +'" and con_release <= "'+_tot+'" ORDER BY con_no DESC LIMIT 1 ) order by con_no desc' , function (err, data){	
-				if(err){
-					res.redirect('back');
-				}
-				
-				qry="select con_no, con_photo, con_title from bobbyDB.contents where con_release <= '"+_tot+"' ORDER BY RAND() LIMIT 0,24";
-				   mysql.select(qry, function (err, data1){
+
+
+			qry="select con_no, con_photo, con_title from bobbyDB.contents where con_release <= '"+_tot+"' ORDER BY RAND() LIMIT 0,3";
+				mysql.select(qry, function (err, data1){
 					if(err){
 					res.redirect('back');
 					}
 					row = data1;
 
 
-				res.render('front/b_conde', {contents : contents, preNext : data, cont : row,});
-				});
-			});
+
+			res.render('front/b_conde', {contents : contents, cont : row});
 		});
 	});
+});
 });
 
 
