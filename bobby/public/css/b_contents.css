@@ -42,5 +42,8 @@ body{background-color:#ececec !important}
 .con-thum .con-title{line-height:1.5em}
 .con-thum .con-date{margin-top:80px}
 .con-info .container{width:100%}
+
+.con-info .container img{ width:100% !important;
+}
 	
 }

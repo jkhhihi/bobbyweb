@@ -3,6 +3,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1"-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 /*.btnClick{width:60px; border:2px solid #666666; border-radius:4px; background-color:#ececec; color:#666666; padding:4px 6px; cursor:pointer}*/
 .btnClick{width:10px; color:#fbfbfb; cursor:pointer}
@@ -13,7 +15,6 @@ h5 b{color:#ff6b6b; line-height:1.5em;}
 </style>
 </head>
 <body>
-<% include front/top %>
 <div class="btnClick" align="right" style="margin-top: 80px;"><b>▼</b></div>
 <div id="p-error" style="display:none;">
 	<div class="container">
@@ -23,9 +24,10 @@ h5 b{color:#ff6b6b; line-height:1.5em;}
 	</div>
 </div>
 <div align="center">
-<h2 style="margin:100px 0 10px 0"><b>ERROR</b></h2>
-<img class="img-responsive" src="/page_imgs/discuss_img/discuss-icon-no-comment1.svg" style="width:150px; margin-bottom:15px;">
-<h5><b>해당 페이지를 사용할 수 없습니다.</b><br><b>해당 페이지가 삭제되었거나, 일시적으로 다운 또는 네트워크 장애일 수 있습니다.</b></h5>
+	<h2 style="margin:100px 0 10px 0"><b>ERROR</b></h2>
+	<img class="img-responsive" src="/page_imgs/b-logo.png" style="width:150px; margin-bottom:15px;">
+	<h5><b>해당 페이지를 사용할 수 없습니다.</b><br><b>해당 페이지가 삭제되었거나, 일시적으로 다운 또는 네트워크 장애일 수 있습니다.</b></h5>
+	<a href="/"><h2>홈으로</h2></a>
 </div>
 
 <script type="text/javascript">

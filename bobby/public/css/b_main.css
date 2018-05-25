@@ -6,7 +6,8 @@
 #mob-info1-text{display:none}
 .service-info .info2{height:600px; padding-top:100px}
 .service-info .info2 h3{color:#0794be; margin-top:100px}
-.service-info .info2-in{background-color: rgba(255,255,255,0.6); padding:40px 0; position:relative; bottom:150px;}
+.service-info .info2-in{background-color: rgba(255,255,255,0.6); padding:20px 0; position:relative; bottom:200px;}
+.service-info .info2-in img{margin-bottom:15px}
 .service-info .info3{padding:0 0 150px 0;}
 .service-info .info3 h3{color:#0794be;}
 .service-info .info3 .balloon{
@@ -38,7 +39,7 @@ margin-left: -20px;}
 
 
 @media all and (max-width:765px) {
-.main-bg{height:400px; padding:100px 0}
+.main-bg{height:400px; padding:120px 0}
 .service-info .info1{padding-top:0}
 .service-info .info1 h3{margin-top:70px}
 .service-info .info1 img{height:300px; margin-top:24px}
@@ -49,7 +50,7 @@ margin-left: -20px;}
 .service-info .info2 h3{margin-top:70px;}
 .service-info .info2 h3, p{text-align:center;}
 .service-info .info2-in{padding:0 0 20px 0; bottom:310px; position:initial}
-.service-info .info2-in p{margin-top:25px}
+.service-info .info2-in p{margin-top:20px}
 .service-info .info3{padding:40px 0;}
 .service-info .info3 h3, p{text-align:center;}
 .service-info .info3 .balloon{
