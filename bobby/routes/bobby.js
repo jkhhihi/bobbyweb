@@ -118,6 +118,10 @@ router.get('/uguide', function(req, res, next) {
 	res.render('front/b_uguide', { });
 });
 
+router.get('/guideline', function(req, res, next) {
+	res.render('front/b_guideline', { });
+});
+
 router.get('/conlist', function(req, res, next) {
 	var no = req.params.no;
 	var row;

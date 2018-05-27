@@ -1,0 +1,26 @@
+/*b_guideline 스타일*/
+#guideline{padding:120px 0 100px 0}
+#guideline .title{margin-bottom:20px;}
+#guideline .container{width:30%}
+#guideline .thumbnail{padding:40px 40px 10px 40px}
+#guideline .thumbnail h3{border-bottom:1px solid #29a2c7}
+#guideline .thumbnail .caption p{font-size:20px; margin-top:20px}
+
+
+
+
+@media all and (max-width:1024px) {
+
+
+}
+
+
+@media all and (max-width:765px) {
+#guideline{padding:70px 0 40px 0}
+#guideline .title h3{font-size:20px}
+#guideline .container{width:100%}
+#guideline .thumbnail{padding:10px 10px 0 10px}
+#guideline .thumbnail .caption p{font-size:16px;}
+
+
+}
