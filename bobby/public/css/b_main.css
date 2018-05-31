@@ -40,12 +40,12 @@ margin-left: -20px;}
 
 @media all and (max-width:765px) {
 .main-bg{height:400px; padding:120px 0}
-.service-info .info1{padding-top:0}
+.service-info .info1{height:515px; padding-top:0}
 .service-info .info1 h3{margin-top:70px}
 .service-info .info1 img{height:300px; margin-top:24px}
 #mob-info1-text{display:block}
 #web-info1-text{display:none}
-.service-info .info2{padding-top:0;}
+.service-info .info2{height:610px; padding-top:0;}
 .service-info .info2 img{height:370px; margin-top:34px;}
 .service-info .info2 h3{margin-top:70px;}
 .service-info .info2 h3, p{text-align:center;}
