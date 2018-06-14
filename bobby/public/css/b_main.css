@@ -33,6 +33,12 @@ margin-top: -20px;
 margin-left: -20px;}
 
 
+/*b_personalinfo 스타일*/
+#personalinfo h4{color:#0794be; padding:120px 0  60px 0}
+#personalinfo .tab-content{border-right:1px solid #ddd; border-left:1px solid #ddd; border-bottom:1px solid #ddd; margin-bottom:100px}
+#personalinfo textarea{padding:50px 30px; border:none}
+
+
 @media all and (max-width:1024px) {
 .service-info .info3 .balloon{width:90%;}	
 }
@@ -70,6 +76,10 @@ width: 100%;
 	margin-left: -20px;
 	margin-top: -20px;
 }
-	
+
+/*b_personalinfo 스타일*/
+#personalinfo h4{padding:80px 0  20px 0}
+#personalinfo .tab-content{margin-bottom:50px}
+#personalinfo textarea{padding:20px 5px;}
 	
 }

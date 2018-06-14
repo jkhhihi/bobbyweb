@@ -196,6 +196,9 @@ router.get('/bottom', function(req, res, next) {
 	res.render('front/bottom', { });
 });
 
+router.get('/personal', function(req, res, next) {
+	res.render('front/b_personalinfo', { });
+});
 
 router.get('/test', function(req, res, next) {
 	res.render('front/test', { });
