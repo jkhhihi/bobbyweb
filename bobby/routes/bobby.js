@@ -140,6 +140,24 @@ router.get('/conlist', function(req, res, next) {
  });
 
 
+
+router.get('/conlist/:no', function(req, res, next) {
+	var no = req.params.no;
+	var _tot = releaseTime();
+	var qry="";
+	var sets = {con_category : no, con_release : _tot};
+	var row;
+	qry="select con_no, con_photo, con_title from bobbyDB.contents where con_category = '"+no+"' and con_release <= '"+_tot+"' order by con_no desc limit 0,60";
+	mysql.select(qry, function (err, data){
+		if (err) throw err;
+		row = data;
+		res.render('front/b_conlist', { contents : row, no : no});
+	});
+});
+
+
+
+
 router.get('/conde/:no', function(req, res, next) {
 
 	var no = req.params.no;
